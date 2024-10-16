@@ -33,7 +33,7 @@ Notes:
 1.	We are asking you to "hard-code" the numbers listed above into Python. There is no file or other data source to open.
 2.	x and height must be iterables of numbers, so x should just be 6 evenly-spaced numbers. To set the labels of "crime" etc. pass the labels into the .bar() function using the tick_label argument.
 
-* The graph you create should look like this:
+The graph you create should look like this:
 
 ![image](https://github.com/user-attachments/assets/15c88fe2-902c-4f90-bc4b-175d3b808f68)
 
@@ -82,7 +82,7 @@ The table shows the data collected by a Consumer Products Group on the relations
 * •	Create a legend
 * Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
 
-* The graph you create should look like this:
+The graph you create should look like this:
  ![image](https://github.com/user-attachments/assets/de92514e-eb16-4021-8cfc-e37802006bfd)
 ________________________________________
 ### Code
@@ -116,7 +116,7 @@ Joe is the branch manager at a bank. Recently, Joe has been receiving customer f
 * •	Build a histogram of these values using the hist() function. Use bins=5 to represent the 20 data points
 * •	Plot, label and give a title as above.
 
-* The graph you create should look like this:
+The graph you create should look like this:
  ![image](https://github.com/user-attachments/assets/029b3921-595c-4957-8f89-4e5ffd886e49)
 
 ________________________________________
@@ -131,7 +131,6 @@ x = [43.1, 35.6, 37.5, 36.5, 45.3, 43.4,
 
 # Create the plot
 None
-
 
 # Plot the histogram with hist() function
 plt.hist(x, bins = 5)
