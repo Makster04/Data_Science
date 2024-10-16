@@ -11,24 +11,28 @@ You will be able to:
 * •	Use Matplotlib to create a histogram
 ________________________________________
 
-* # Run this cell without changes
+```python
+# Run this cell without changes
+
 import numpy as np
 import matplotlib.pyplot as plt
 %matplotlib inline
+```
 ________________________________________
-keyboard_arrow_down
-Exercise 1
+
+## Exercise 1
 Make a vertical bar graph using ax.bar() for the following set of data:
 Jim's Video Library contains 40 crime, 30 science fiction, 10 drama, 50 comedy, 25 action and 5 documentary movies.
-•	Set x-axis (genres) and y-axis (number of movies)
-•	Plot and label the bar graph
-•	Provide a suitable title
-•	Label x and y-axis
+* •	Set x-axis (genres) and y-axis (number of movies)
+* •	Plot and label the bar graph
+* •	Provide a suitable title
+* •	Label x and y-axis
 Notes:
 1.	We are asking you to "hard-code" the numbers listed above into Python. There is no file or other data source to open.
 2.	x and height must be iterables of numbers, so x should just be 6 evenly-spaced numbers. To set the labels of "crime" etc. pass the labels into the .bar() function using the tick_label argument.
 The graph you create should look like this:
- 
+![image](https://github.com/user-attachments/assets/07da983b-5104-483d-bc08-b2ccf41f7257)
+
 ________________________________________
 [19]
 1s
