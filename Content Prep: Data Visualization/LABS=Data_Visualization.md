@@ -82,7 +82,7 @@ The table shows the data collected by a Consumer Products Group on the relations
 * •	Set appropriate labels for axes
 * •	Give a title to the plot
 * •	Create a legend
-* Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
+Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
 
 The graph you create should look like this:
  ![image](https://github.com/user-attachments/assets/de92514e-eb16-4021-8cfc-e37802006bfd)
