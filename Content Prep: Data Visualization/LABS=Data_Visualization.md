@@ -30,7 +30,8 @@ Jim's Video Library contains 40 crime, 30 science fiction, 10 drama, 50 comedy, 
 Notes:
 1.	We are asking you to "hard-code" the numbers listed above into Python. There is no file or other data source to open.
 2.	x and height must be iterables of numbers, so x should just be 6 evenly-spaced numbers. To set the labels of "crime" etc. pass the labels into the .bar() function using the tick_label argument.
-The graph you create should look like this:
+* The graph you create should look like this:
+
 ![image](https://github.com/user-attachments/assets/07da983b-5104-483d-bc08-b2ccf41f7257)
 
 ________________________________________
@@ -75,7 +76,7 @@ The table shows the data collected by a Consumer Products Group on the relations
 * •	Give a title to the plot
 * •	Create a legend
 Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
-The graph you create should look like this:
+* The graph you create should look like this:
  ![image](https://github.com/user-attachments/assets/650d7b56-4eda-4669-9e7b-a8c531d60824)
 
 ________________________________________
