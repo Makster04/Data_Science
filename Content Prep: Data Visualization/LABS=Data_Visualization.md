@@ -84,13 +84,10 @@ The table shows the data collected by a Consumer Products Group on the relations
 
 * The graph you create should look like this:
  ![image](https://github.com/user-attachments/assets/de92514e-eb16-4021-8cfc-e37802006bfd)
-
-
 ________________________________________
-[24]
-0s
+### Code
 # Replace None with appropriate code
-
+```python
 weight = [2750, 3125, 2100, 4082, 2690, 3640, 4380, 2241, 2895, 3659]
 mpg = [29, 23, 33, 28, 20, 21, 14, 25, 31, 17]
 
@@ -106,18 +103,24 @@ plt.xlabel("Car Weight")
 plt.ylabel("Miles per Gallon")
 plt.legend()
 plt.show()
- 
-________________________________________
-keyboard_arrow_down
-Exercise 3
+```
+_![image](https://github.com/user-attachments/assets/170241e8-3ca7-4e3f-ae73-b40a6255dc86)
+_______________________________________
+## Exercise 3
+
 Joe is the branch manager at a bank. Recently, Joe has been receiving customer feedback saying that the waiting times for clients to be served by customer service representatives are too long. Joe decides to observe and write down the time spent waiting by each customer. Here are his findings from observing and writing down the wait times (in seconds), spent by 20 customers:
+```
 43.1, 35.6, 37.5, 36.5, 45.3, 43.4, 40.3, 50.2, 47.3, 31.2, 42.2, 45.5, 30.3, 31.4, 35.6, 45.2, 54.1, 45.6, 36.5, 43.1
-•	Build a histogram of these values using the hist() function. Use bins=5 to represent the 20 data points
-•	Plot, label and give a title as above.
-The graph you create should look like this:
- 
+```
+* •	Build a histogram of these values using the hist() function. Use bins=5 to represent the 20 data points
+* •	Plot, label and give a title as above.
+
+* The graph you create should look like this:
+ ![image](https://github.com/user-attachments/assets/029b3921-595c-4957-8f89-4e5ffd886e49)
+
 ________________________________________
-[28]
+### Code
+```python
 # Replace None with appropriate code
 
 x = [43.1, 35.6, 37.5, 36.5, 45.3, 43.4,
@@ -136,9 +139,11 @@ plt.hist(x, bins = 5)
 plt.title('Customer Waiting Time')
 plt.xlabel('Waiting Times')
 plt.ylabel('Number of Customer')
- 
+```
+![image](https://github.com/user-attachments/assets/4e60599c-663b-4251-a26c-561e77294646)
+
 ________________________________________
-Summary
+## Summary
 In this lab, you got some good practice working with creating plots in Python using Matplotlib.
 ________________________________________
 
