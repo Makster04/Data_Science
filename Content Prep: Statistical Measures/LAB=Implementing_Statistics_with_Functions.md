@@ -92,7 +92,9 @@ Using the Python skills you have learned so far, create a function `get_mean()` 
 ```python
 def get_mean(data):
     # Replace None with appropriate code
-    mean = None
+    total_sum = sum(data)
+    length = len(data)
+    mean = total_sum/length
     
     return round(mean,2)
 
