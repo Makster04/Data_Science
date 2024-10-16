@@ -1,4 +1,4 @@
-# Data Visualization - Lab
+# Data Visualization (Matplotlib) - Lab
 
 ## Introduction
 
