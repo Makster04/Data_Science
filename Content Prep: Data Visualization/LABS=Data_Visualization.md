@@ -48,48 +48,50 @@ ________________________________________
 ```python
 # Replace None with appropriate code
 height = [40, 30, 10, 50, 25, 5]
-x = range(len(labels))
 labels = ['Crime', 'Sci-Fi', 'Drama', 'Comedy', 'Action', 'Documentary']
+x = range(len(labels))
 
 # Create the plot
 fig, ax = plt.subplots(figsize=(8, 6))
 
 # Plot vertical bars of fixed width by passing x and height values to .bar() function
-plt.bar(x, height, tick_label=labels)
+plt.bar(x, height, tick_label= labels)
 
 # Give a title to the bar graph and label the axes
 plt.title("Jim's Video Library")
 plt.xlabel("Genres")
 plt.ylabel("Number of Movies")
 ```
-
-![image](https://github.com/user-attachments/assets/84983462-10b6-4b6d-8fb7-53c79081d5a9)
+![image](https://github.com/user-attachments/assets/2ef59099-aa7c-4c4a-898c-84871c69d8bf)
 
 ________________________________________
 
 ## Exercise 2
+
 The table shows the data collected by a Consumer Products Group on the relationship between the weight of a car and its average gas mileage.
-```
-  Car Type  Weight    miles per gallon
-    A        2750       29
-    B        3125       23
-    C        2100       33
-    D        4082       18
-    E        2690       20
-    F        3640       21
-    G        4380       14
-    H        2241       25
-    I        2895       31
-    J        3659       17
-```
-* •	Use a scatter plot to show the relationship between mpg and weight of a car using `.scatter()`
-* •	Set appropriate labels for axes
-* •	Give a title to the plot
-* •	Create a legend
+
+      Car Type  Weight	miles per gallon
+        A	    2750	   29
+        B	    3125	   23
+        C	    2100	   33
+        D	    4082	   18
+        E	    2690	   20
+        F	    3640	   21
+        G	    4380	   14
+        H	    2241	   25
+        I	    2895	   31
+        J	    3659	   17
+        
+* Use a scatter plot to show the relationship between mpg and weight of a car using `.scatter()`
+* Set appropriate labels for axes
+* Give a title to the plot
+* Create a legend
+
 Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
 
 The graph you create should look like this:
- ![image](https://github.com/user-attachments/assets/de92514e-eb16-4021-8cfc-e37802006bfd)
+
+![scatter plot](https://curriculum-content.s3.amazonaws.com/data-science/images/scatter_plot.png)
 ________________________________________
 ### Code
 ```python
@@ -116,14 +118,15 @@ _______________________________________
 ## Exercise 3
 
 Joe is the branch manager at a bank. Recently, Joe has been receiving customer feedback saying that the waiting times for clients to be served by customer service representatives are too long. Joe decides to observe and write down the time spent waiting by each customer. Here are his findings from observing and writing down the wait times (in seconds), spent by 20 customers:
-```
+
 43.1, 35.6, 37.5, 36.5, 45.3, 43.4, 40.3, 50.2, 47.3, 31.2, 42.2, 45.5, 30.3, 31.4, 35.6, 45.2, 54.1, 45.6, 36.5, 43.1
-```
-* •	Build a histogram of these values using the hist() function. Use bins=5 to represent the 20 data points
-* •	Plot, label and give a title as above.
+
+* Build a histogram of these values using the `hist()` function. Use `bins=5` to represent the 20 data points
+* Plot, label and give a title as above.
 
 The graph you create should look like this:
- ![image](https://github.com/user-attachments/assets/029b3921-595c-4957-8f89-4e5ffd886e49)
+
+![histogram](https://curriculum-content.s3.amazonaws.com/data-science/images/histogram.png)
 
 ________________________________________
 ### Code
