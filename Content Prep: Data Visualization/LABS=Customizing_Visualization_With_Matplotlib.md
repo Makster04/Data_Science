@@ -103,14 +103,17 @@ This was easy, let's move on to drawing multiple plots within a figure space.
 
 ## Exercise 2
 Perform following actions:
+
 •	Create a subplots figure with 3 rows and 4 columns and a figsize of 15 by 15
 •	Plot the lines y=x, y=2x, y=3x, y=4x,...y=10x, y=11x, y=12x in the respective subplots. So, y=x in the 0th row, 0th column, y=2x in the 0th row, 1th column, etc.
 •	Use the variable x that we have already created for you as x, then calculate your own y. Call this y y_new (within a for loop).
+
 The graph you create should look like this:
- 
+ ![image](https://github.com/user-attachments/assets/7a6a7465-4d11-4b7b-ac48-16627f0d15bb)
+
 ________________________________________
-[103]
-2s
+### Code
+```python
 fig, axes = plt.subplots(nrows=3, ncols=4, figsize=(15, 15)) 
 fig.suptitle('Graphs of y = nx', fontsize=16)
 fig.tight_layout(pad=3.0)
@@ -133,6 +136,7 @@ for n in range(1, 13):
     
 # Adjust layout to prevent overlap
 plt.show()
+```
 ________________________________________
 keyboard_arrow_down
 Exercise 3
