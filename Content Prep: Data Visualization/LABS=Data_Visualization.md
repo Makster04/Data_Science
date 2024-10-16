@@ -35,7 +35,9 @@ Notes:
 
 The graph you create should look like this:
 
-![image](https://github.com/user-attachments/assets/15c88fe2-902c-4f90-bc4b-175d3b808f68)
+<div style="background-color: white; padding: 10px; display: inline-block;">
+  <img src="https://github.com/user-attachments/assets/15c88fe2-902c-4f90-bc4b-175d3b808f68" alt="image">
+</div>
 
 ________________________________________
 ### Code
