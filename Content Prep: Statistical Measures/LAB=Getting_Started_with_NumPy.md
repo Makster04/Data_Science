@@ -1,9 +1,9 @@
 # [Getting Started with NumPy - Lab](https://colab.research.google.com/gist/bpurdy-ds/81963e175eb8c707ae91298c495104d1/index.ipynb#scrollTo=oDxQ7C2VckdJ)
-________________________________________
+
 ## Introduction
-________________________________________
+
 Now that we have introduced NumPy, let's put it to practice. In this lab, you are going to be creating arrays, performing operations on them, and returning new arrays all using the NumPy library. Let's get started!
-________________________________________
+
 # Objectives
 
 You will be able to:
@@ -11,15 +11,15 @@ You will be able to:
 - Instantiate a numpy array with specified values
 - Use broadcasting to perform a math operation on an entire numpy array
 
-________________________________________
+
 ```python
 Import NumPy under the standard alias
 import numpy as np
 ```
-________________________________________
+
 
 ## Generate some mock data
-________________________________________
+
 Create a NumPy array for each of the following:
     1. Using a range
     2. Using a Python list
@@ -37,7 +37,7 @@ py_range: range(0, 5)
 array_from_list: np.array([0, 1, 2, 3, 4])
 array_from_range: np.array([0, 1, 2, 3, 4])
 ```
-________________________________________
+
 Next, we have a list of heights and weights and we'd like to use them to create a collection of BMIs. However, they are both in inches and pounds (imperial system), respectively.
 
 Let's use what we know to create NumPy arrays with the metric equivalent values (height in meters & weight in kg).
