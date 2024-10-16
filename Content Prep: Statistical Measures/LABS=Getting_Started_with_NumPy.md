@@ -29,6 +29,7 @@ Below, create a list in Python that has 5 elements (i.e. [0,1,2,3,4]) and assign
 Next, do the same, but instead of a list, create a range with 5 elements and assign it to the variable, `py_range`.
 
 Finally, use the list and range to create NumPy arrays and assign the array from list to the variable `array_from_list`, and the array from the range to the variable `array_from_range`.
+
 ```python
 # Your code here
 py_list: [0, 1, 2, 3, 4]
@@ -48,6 +49,7 @@ ________________________________________
 > 2.2046 lbs = 1 kilogram
 ________________________________________
 ### Codes
+#### Input:
 ```python
 # Use the conversion rate for turning height in inches to meters
 list_height_inches = [65, 68, 73, 75, 78]
@@ -57,10 +59,12 @@ array_height_meters = (array_height_inches) * (0.0254)
 
 array_height_meters
 ```
+#### Output:
 ```
 array([1.651 , 1.7272, 1.8542, 1.905 , 1.9812])
 ```
 ________________________________________
+#### Input:
 ```python
 # Use the conversion rate for turning weight in pounds to kilograms
 list_weight_pounds = [150, 140, 220, 205, 265]
@@ -71,6 +75,7 @@ array_weight_kg = (array_weight_pounds) / (2.2046)
 
 array_weight_kg
 ```
+#### Output:
 ```
 array([ 68.03955366,  63.50358342,  99.79134537,  92.98739   ,
        120.20321147])
@@ -87,12 +92,15 @@ So, to get BMI we divide weight by the squared value of height. For example, if 
 Use the BMI calculation to create a NumPy array of BMIs
 ________________________________________
 ### Codes
+
+#### Input:
 ```python
 # Your code here
 BMI_array = array_weight_kg / (array_height_meters ** 2)
 
 BMI_array
 ```
+#### Output:
 ```
 array([24.9613063 , 21.28692715, 29.02550097, 25.62324316, 30.62382485])
 ```
@@ -100,10 +108,15 @@ ________________________________________
 ## Create a vector of ones the same size as your BMI vector using `np.ones()`
 ________________________________________
 ### Code
+
+#### Input:
 ```python
 # Your code here
 identity = np.ones(5)
 identity
+```
+#### Output:
+```
 array([1., 1., 1., 1., 1.])
 ```
 ________________________________________
@@ -111,12 +124,14 @@ ________________________________________
 
 The resulting product should have the same values as your original BMI numpy array.
 ________________________________________
-[29]
 ### Code
+
+#### Input:
 ```python
 # Your code here
 identity * BMI_array
 ```
+#### Output:
 ```
 array([24.9613063 , 21.28692715, 29.02550097, 25.62324316, 30.62382485])
 ```
@@ -124,7 +139,7 @@ ________________________________________
 ## Level Up: Using NumPy to Parse a File
 The Pandas library that we've been using is built on top of NumPy; all columns/series in a Pandas DataFrame are built using NumPy arrays. To get a better idea of a how a built-in method like `pd.read_csv()` works, we'll try and recreate that here!
 
-
+#### Input:
 ```python
 import numpy as np
 
@@ -151,6 +166,7 @@ for i, line in enumerate(lines[1:]):  # Skip the first line (header)
 # Step 5: Preview the results
 print(matrix)
 ```
+#### Output:
 ```
 [[  1.   105.    47.    85.4    1.75   5.1   63.    33.  ]
  [  2.   115.    49.    94.2    2.1    3.8   70.    14.  ]
