@@ -1,4 +1,4 @@
-# Implementing Statistics with Functions - Lab
+# [Implementing Statistics with Functions - Lab](https://colab.research.google.com/gist/bpurdy-ds/a93b079e97db488b5d1f17172e1a37c5/index.ipynb)
 
 ## Introduction 
 In this lab you'll dive deep into calculating the measures of central tendency and dispersion introduced in previous lessons. You will code the formulas for these functions in Python which will require you to use the programming skills that you have gained in the other lessons of this section. Let's get started!
@@ -39,7 +39,7 @@ In the cells below:
 # Replace None with appropriate code
 num_records = height[:10]
 
-num_records # 4785
+num_records # [74, 70, 61, 68, 66, 98, 99, 70, 65, 64]
 ```
 #### Output:
 ```
@@ -71,6 +71,7 @@ Next, we'll use Matplotlib to create a histogram by passing in our data, as well
 # A histogram should display below
 plt.hist(height, bins=8);
 ```
+![image](https://github.com/user-attachments/assets/d2ea9a0a-14a1-4b71-868b-9198416e1c79)
 
 Do you spot anything unusual above? Some outliers, maybe?
 
@@ -87,7 +88,7 @@ Using the Python skills you have learned so far, create a function `get_mean()` 
 * Calculate the sum of numbers and length of the list 
 * Calculate mean from above, round off to 2 decimals and return it.
 
-
+#### Input:
 ```python
 def get_mean(data):
     # Replace None with appropriate code
@@ -101,17 +102,26 @@ test2 = [4, 2, 3, 1]
 print(get_mean(test1)) # 3.0
 print(get_mean(test2)) # 2.5
 ```
+#### Output:
+```
+3.0
+2.5
+```
+________________________________________
 
 Now, we'll test the function by passing in the height list.
 
-
+#### Input:
 ```python
 # Run this cell without changes
 mean = get_mean(height)
 
 print("Sample Mean:", mean) # Sample Mean: 69.58
 ```
-
+#### Output:
+```
+Sample Mean: 69.58
+```
 So, we have our mean length, 69.58, and this confirms our observations from the histogram. But we also have some outliers in our data above and we know outliers affect the mean calculation by pulling the mean value in their direction. So, let's remove these outliers and create a new list to see if our mean shifts or stays. We'll use a threshold of 80 inches, i.e. filter out any values greater than 80. 
  
 Perform following tasks:
@@ -120,50 +130,65 @@ Perform following tasks:
 * Perform a `for` loop to iteratively check and append values to a new list if the value is less than 80, for every element in the original list
 * Return the new list 
 
-
+#### Input:
 ```python
 def filter_height_outliers(data):
-    
+
     filtered_data = []
-    
-    # Perform filtering here
-    
+    for height in data:
+      if height < 80:
+        filtered_data.append(height)
+
     return filtered_data
 
 test = [60, 70, 80, 90]
 filter_height_outliers(test) # [60, 70]
 ```
+#### Output:
+```
+[60, 70]
+```
 
 Great, now we can use `filter_height_outliers()` to filter our `height` list and plot a new histogram to see if things change considerably.  
 
-
+#### Input:
 ```python
 # Filter the height list using the above function
 # Replace None with appropriate code
-filtered_height = None
+filtered_height = filter_height_outliers(height)
 
 len(filtered_height) # 4347
+```
+#### Output:
+```
+4347
 ```
 
 Now that we have filtered the outliers out of our data and reduced the size of the dataset from 4785 to 4347, let's recreate our histogram with 8 bins using our filtered data. 
 
 **_NOTE_**: You do not need to reimport `matplotlib.pyplot as plt` -- once it's been imported, it's stored in memory and can be accessed whenever we like in other cells. 
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
 # A histogram should display below
 plt.hist(None, bins=None);
 ```
+![image](https://github.com/user-attachments/assets/b258334f-a36d-4a1b-9087-9ae1800e90dc)
+
 
 Since we've filtered our data to remove outliers, we should also recalculate the mean.  Do this now in the cell below, using our `get_mean()` function. 
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
-new_mean = None
+new_mean = get_mean(filtered_height)
 
 new_mean # 66.85
+```
+#### Output:
+```
+66.85
 ```
 
 Does the mean height of our filtered data match up with what we see in our histogram of our filtered data?
@@ -191,27 +216,53 @@ Hints:
 
 ```python
 def get_median(data):
-    # Replace None with appropriate code
-    data_sorted = None
+    # Sort the data from smallest to largest
+    data_sorted = sorted(data)
     
-    # Your code here
-    # Check for even/odd and perform calculations accordingly - use if-else 
+    # Calculate the length of the sorted data
+    index = len(data_sorted)
+    
+    # Check if the number of data points is odd or even
+    if index % 2 == 1:
+        # If the number of elements is odd, return the middle element (index n//2)
+        median = data_sorted[index // 2]
+    else:
+        # If the number of elements is even, find the two middle elements
+        middle1 = data_sorted[index // 2 - 1]  # The element before the middle
+        middle2 = data_sorted[index // 2]      # The element at the middle
+        # Calculate the average of the two middle elements
+        median = (middle1 + middle2) / 2
 
-test1 = [5, 4, 1, 3, 2]
-test2 = [4, 2, 3, 1]
+    # Return the calculated median value
+    return median
 
-print(get_median(test1)) # 3
-print(get_median(test2)) # 2.5
+# Test the function with two datasets: one odd-sized and one even-sized
+test1 = [5, 4, 1, 3, 2]  # Odd number of elements
+test2 = [4, 2, 3, 1]     # Even number of elements
+
+# Print the median of the datasets
+print(get_median(test1))  # 3
+print(get_median(test2))  # 2.5
+
+```
+#### Output:
+```
+3
+2.5
 ```
 
 Great, now we can pass in our original `height` list to this function to check the median. 
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
-median = None
+median = get_median(height)
 
 median # 67
+```
+#### Output:
+```
+67
 ```
 
 So, we have 67, which is much closer to the filtered list mean (66.85) than the mean we calculated with actual list (69.58). So, median in this case seems to be a much better indicator of the central tendency found in the dataset. This makes sense because we've already learned that medians are less sensitive to outliers than mean values are! 
@@ -226,7 +277,7 @@ In the cell below, write a function that takes in a list of numbers and returns 
 
 **_Hint_**: Building a **_frequency distribution_** table using dictionaries is probably the easiest way to approach this problem. Use each unique element from the height list as a key, and the frequency of this element as the value and build a dictionary. You can then simply identify the keys (heights) with maximum values. 
 
-
+#### Input:
 ```python
 # Throughout this cell, replace None with appropriate code
 
@@ -234,24 +285,29 @@ def get_mode(data):
 
     # Create and populate frequency distribution
     frequency_dict = {}
-    
+
     for height in data:
         # If an element is not in the dict, add it to the dict with value 1
+        if height not in frequency_dict:
+          frequency_dict[height] = 1
         # If an element is already in the dict, +1 the value in place
-        None
-    
+        elif height in frequency_dict:
+          frequency_dict[height] += 1
+       
+
     # Find the frequency of the mode(s) by finding the largest
     # value in frequency_dict
-    highest_freq = None
-    
+    highest_freq = max(frequency_dict.values())
+
     # Create a list for mode values
     modes = []
-    
+
     # From the dictionary, add element(s) to the modes list with max frequency
     for height, frequency in frequency_dict.items():
-        None
+        if frequency == highest_freq:
+          modes.append(height)
 
-    # Return the mode list 
+    # Return the mode list
     return modes
 
 test1 = [1, 2, 3, 5, 5, 4]
@@ -259,16 +315,26 @@ test2 = [1, 1, 1, 2, 3, 4, 5, 5, 5]
 
 print(get_mode(test1)) # [5]
 print(get_mode(test2)) # [1, 5]
+
 ```
+#### Output:
+```
+[5]
+[1, 5]
+````
 
 That's done. Now you can use the above function to calculate the mode of the original `height` list to compare it with our mean and median values. 
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
-mode = None
+mode = get_mode(height)
 
 mode # [64]
+```
+#### Output:
+```
+64
 ```
 
 So, the mode value is much lower than our mean and median calculated earlier. What do you make of this? The answer to that could be subjective and depends on the problem. i.e. if your problem is to identify sizes for garments that would sell the most, you cannot disregard mode. However, if you want to get an idea about the general or typical height of individuals, you can probably still do that with the median and the average. 
@@ -285,24 +351,25 @@ $$ \Large s^2 = \frac{1}{n - 1} \sum_{i=1}^{n}(x_i - \bar{x})^2 $$
 
 Note that this formula is for the **sample** variance. The formula is slightly different than the formula for calculating population variance. Read more about the difference [here](https://www.macroption.com/population-sample-variance-standard-deviation/). In the cell below, write a function that takes a list of numbers as input and returns the variance (rounded to two decimal places) of the sample as output.
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
 
 def get_variance(sample):
 
     # First, calculate the sample mean using get_mean()
-    sample_mean = None
-    
+    sample_mean = get_mean(sample)
+
     sum_of_squares = 0
-    for height in sample:
-        # Now, calculate the sum of squares by subtracting the sample mean
-        # from each height, squaring the result, and adding it to the total
-        None
-        
-    # Divide the sum of squares by the number of items in the sample -1 to calculate variance 
-    variance = None
     
+    for value in sample:
+      # Now, calculate the sum of squares by subtracting the sample mean
+      # from each height, squaring the result, and adding it to the total
+      sum_of_squares += (value - sample_mean) ** 2
+
+    # Divide the sum of squares by the number of items in the sample -1 to calculate variance
+    variance = sum_of_squares / (len(sample) - 1)
+
     return round(variance, 2)
 
 test1 = [1, 2, 3, 5, 5, 4]
@@ -311,15 +378,26 @@ print(get_variance(test1)) # 2.67
 print(get_mean(test1)) # 3.33
 print(get_variance(test2)) # 3.25
 ```
+#### Output:
+```
+2.67
+3.33
+3.25
 
+```
 Now we can test the variance of our list `height` with our new `get_variance()` function. 
 
+#### Input:
 
 ```python
 # Replace None with appropriate code
 variance = None
 
 variance # 87.74
+```
+#### Output:
+```
+87.74
 ```
 
 So this value, as we learned earlier, tells us a bit about the deviation but not in the units of underlying data. This is because it squares the values of deviations. Standard deviation, however, can deal with this issue as it takes the square roots of differences. So that would probably be a bit more revealing. 
@@ -347,42 +425,59 @@ Alternatively, another approach would be to raise that number to the power of `0
 100**0.5 # 10.0
 ```
 
-
+#### Input:
 ```python
-# Replace None with appropriate code
-from math import sqrt
+#from math import sqrt
 
 def get_stddev(sample):
+    # Step 1: Calculate the mean
+    mean = sum(sample) / len(sample)
     
-    stddev = None
+    # Step 2: Calculate the squared differences and their sum
+    squared_diffs = [(x - mean) ** 2 for x in sample]
+    
+    # Step 3: Calculate the variance (sum of squared differences divided by n-1)
+    variance = sum(squared_diffs) / (len(sample) - 1)
+    
+    # Step 4: Calculate the standard deviation (square root of variance)
+    stddev = sqrt(variance)
     
     return round(stddev, 2)
 
-test = [120,112,131,211,312,90]
-
-get_stddev(test) # 84.03
+# Test the function
+test = [120, 112, 131, 211, 312, 90]
+print(get_stddev(test))  # This will print the standard deviation rounded to 2 decimal places
 ```
-
+#### Output:
+```
+84.03
+```
 So now we can finally calculate the standard deviation for our `height` list and inspect the results. 
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
-standard_deviation = None
-
+standard_deviation = get_stddev(height)
 standard_deviation # 9.37
+```
+
+#### Output:
+```
+9.37
 ```
 
 So 9.37 inches is the amount of deviation present in our dataset. As we are still including outlier values, this might be slightly affected but these results are now much more reliable. 
 
 Finally, we will build a boxplot for height data and see if it agrees with our understanding for this data that we have developed up to this point. Use the `matplotlib`'s `boxplot()` function with height data and comment on the output.
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
 # A boxplot should display below
-plt.boxplot(None);
+plt.boxplot(filtered_height);
 ```
+![image](https://github.com/user-attachments/assets/0f910feb-6eb9-4020-bf81-097b4958d173)
+
 
 ## Simplifying the Process with NumPy
 
