@@ -55,8 +55,9 @@ plt.title("Jim's Video Library")
 plt.xlabel("Genres")
 plt.ylabel("Number of Movies")
 ```
+```
 ![image](https://github.com/user-attachments/assets/84983462-10b6-4b6d-8fb7-53c79081d5a9)
-
+```
 ________________________________________
 
 ## Exercise 2
