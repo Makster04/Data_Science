@@ -38,6 +38,7 @@ Notes:
 ![image](https://github.com/user-attachments/assets/07da983b-5104-483d-bc08-b2ccf41f7257)
 
 ________________________________________
+### Code
 ```python
 # Replace None with appropriate code
 height = [40, 30, 10, 50, 25, 5]
@@ -55,9 +56,9 @@ plt.title("Jim's Video Library")
 plt.xlabel("Genres")
 plt.ylabel("Number of Movies")
 ```
-```
+
 ![image](https://github.com/user-attachments/assets/84983462-10b6-4b6d-8fb7-53c79081d5a9)
-```
+
 ________________________________________
 
 ## Exercise 2
