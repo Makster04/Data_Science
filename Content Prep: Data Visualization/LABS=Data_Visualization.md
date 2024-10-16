@@ -1,14 +1,16 @@
-# Data Visualization (Matplotlib) - Lab
+# Data Visualization - Lab
 
 ## Introduction
-
 This lab will give you some structured practice performing data visualization!
-Objectives
+
+## Objectives
 
 You will be able to:
-* •	Use Matplotlib to create a bar graph
-* •	Use Matplotlib to create a scatter plot
-* •	Use Matplotlib to create a histogram
+
+* Use Matplotlib to create a bar graph
+* Use Matplotlib to create a scatter plot
+* Use Matplotlib to create a histogram
+
 ________________________________________
 
 ```python
@@ -22,21 +24,23 @@ ________________________________________
 
 ## Exercise 1
 
-Make a vertical bar graph using ax.bar() for the following set of data:
-Jim's Video Library contains 40 crime, 30 science fiction, 10 drama, 50 comedy, 25 action and 5 documentary movies.
-* •	Set x-axis (genres) and y-axis (number of movies)
-* •	Plot and label the bar graph
-* •	Provide a suitable title
-* •	Label x and y-axis
+Make a vertical bar graph using `ax.bar()` for the following set of data:
+
+> Jim's Video Library contains 40 crime, 30 science fiction, 10 drama, 50 comedy, 25 action and 5 documentary movies.
+
+* Set x-axis (genres) and y-axis (number of movies)
+* Plot and label the bar graph
+* Provide a suitable title
+* Label x and y-axis
 
 Notes:
-1.	We are asking you to "hard-code" the numbers listed above into Python. There is no file or other data source to open.
-2.	x and height must be iterables of numbers, so x should just be 6 evenly-spaced numbers. To set the labels of "crime" etc. pass the labels into the .bar() function using the tick_label argument.
+
+1. We are asking you to "hard-code" the numbers listed above into Python. There is no file or other data source to open.
+2. `x` and `height` must be iterables of numbers, so `x` should just be 6 evenly-spaced numbers. To set the labels of "crime" etc. pass the `labels` into the `.bar()` function using the `tick_label` argument.
 
 The graph you create should look like this:
 
-
-  <img src="https://github.com/user-attachments/assets/15c88fe2-902c-4f90-bc4b-175d3b808f68" alt="image">
+![bar graph](https://curriculum-content.s3.amazonaws.com/data-science/images/bar_chart.png)
 
 
 ________________________________________
