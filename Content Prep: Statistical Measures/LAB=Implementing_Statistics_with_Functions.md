@@ -393,7 +393,7 @@ Now we can test the variance of our list `height` with our new `get_variance()` 
 
 ```python
 # Replace None with appropriate code
-variance = None
+variance = get_variance(height)
 
 variance # 87.74
 ```
