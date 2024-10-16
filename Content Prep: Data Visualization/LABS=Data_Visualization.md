@@ -86,8 +86,9 @@ The table shows the data collected by a Consumer Products Group on the relations
  ![image](https://github.com/user-attachments/assets/de92514e-eb16-4021-8cfc-e37802006bfd)
 ________________________________________
 ### Code
-# Replace None with appropriate code
 ```python
+# Replace None with appropriate code
+
 weight = [2750, 3125, 2100, 4082, 2690, 3640, 4380, 2241, 2895, 3659]
 mpg = [29, 23, 33, 28, 20, 21, 14, 25, 31, 17]
 
