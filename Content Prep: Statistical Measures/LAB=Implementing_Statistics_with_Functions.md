@@ -174,7 +174,7 @@ Now that we have filtered the outliers out of our data and reduced the size of t
 ```python
 # Replace None with appropriate code
 # A histogram should display below
-plt.hist(None, bins=None);
+plt.hist(height, bins=8);
 ```
 ![image](https://github.com/user-attachments/assets/b258334f-a36d-4a1b-9087-9ae1800e90dc)
 
