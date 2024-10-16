@@ -34,8 +34,7 @@ The graph you create should look like this:
 ![image](https://github.com/user-attachments/assets/07da983b-5104-483d-bc08-b2ccf41f7257)
 
 ________________________________________
-[19]
-1s
+```python
 # Replace None with appropriate code
 height = [40, 30, 10, 50, 25, 5]
 x = range(len(labels))
@@ -51,11 +50,14 @@ plt.bar(x, height, tick_label=labels)
 plt.title("Jim's Video Library")
 plt.xlabel("Genres")
 plt.ylabel("Number of Movies")
- 
+```
+![image](https://github.com/user-attachments/assets/84983462-10b6-4b6d-8fb7-53c79081d5a9)
+
 ________________________________________
-keyboard_arrow_down
-Exercise 2
+
+## Exercise 2
 The table shows the data collected by a Consumer Products Group on the relationship between the weight of a car and its average gas mileage.
+```
   Car Type  Weight    miles per gallon
     A        2750       29
     B        3125       23
@@ -67,13 +69,15 @@ The table shows the data collected by a Consumer Products Group on the relations
     H        2241       25
     I        2895       31
     J        3659       17
-•	Use a scatter plot to show the relationship between mpg and weight of a car using .scatter()
-•	Set appropriate labels for axes
-•	Give a title to the plot
-•	Create a legend
+```
+* •	Use a scatter plot to show the relationship between mpg and weight of a car using `.scatter()`
+* •	Set appropriate labels for axes
+* •	Give a title to the plot
+* •	Create a legend
 Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
 The graph you create should look like this:
- 
+ ![image](https://github.com/user-attachments/assets/650d7b56-4eda-4669-9e7b-a8c531d60824)
+
 ________________________________________
 [24]
 0s
