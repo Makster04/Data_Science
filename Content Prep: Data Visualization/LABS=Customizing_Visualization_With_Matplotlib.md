@@ -104,7 +104,7 @@ plt.show()
 ![image](https://github.com/user-attachments/assets/8563e70e-708e-4599-90ad-db619aca72bf)
 
 ________________________________________
-his was easy, let's move on to drawing multiple plots within a figure space.
+This was easy, let's move on to drawing multiple plots within a figure space.
 
 ## Exercise 2
 
@@ -116,8 +116,7 @@ Perform following actions:
 
 The graph you create should look like this:
 
-![subplots showing 1x through 12x](https://curriculum-content.s3.amazonaws.com/data-science/images/subplots_1x_12x.png
-
+![subplots showing 1x through 12x](https://curriculum-content.s3.amazonaws.com/data-science/images/subplots_1x_12x.png)
 ________________________________________
 ### Code
 ```python
