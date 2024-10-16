@@ -245,7 +245,6 @@ The plot you create should look like this:
 ![two square subplots](https://curriculum-content.s3.amazonaws.com/data-science/images/subplots_left_right_square.png)
  
 ________________________________________
-[100]
 ### Code
 ```python
 # Create the plot
