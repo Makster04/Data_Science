@@ -35,7 +35,7 @@ Notes:
 
 * The graph you create should look like this:
 
-![image](https://github.com/user-attachments/assets/07da983b-5104-483d-bc08-b2ccf41f7257)
+![image](https://github.com/user-attachments/assets/15c88fe2-902c-4f90-bc4b-175d3b808f68)
 
 ________________________________________
 ### Code
@@ -81,8 +81,10 @@ The table shows the data collected by a Consumer Products Group on the relations
 * •	Give a title to the plot
 * •	Create a legend
 * Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
+
 * The graph you create should look like this:
- ![image](https://github.com/user-attachments/assets/650d7b56-4eda-4669-9e7b-a8c531d60824)
+ ![image](https://github.com/user-attachments/assets/de92514e-eb16-4021-8cfc-e37802006bfd)
+
 
 ________________________________________
 [24]
