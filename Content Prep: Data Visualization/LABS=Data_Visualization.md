@@ -1,4 +1,4 @@
-# Data Visualization - Lab
+# Data Visualization - Lab (https://colab.research.google.com/gist/bpurdy-ds/ee543f3ad14d6101db31d80e0967c45b/index.ipynb#scrollTo=KcPv7irjk6fU)
 
 ## Introduction
 This lab will give you some structured practice performing data visualization!
