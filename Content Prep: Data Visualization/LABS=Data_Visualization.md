@@ -74,8 +74,8 @@ The table shows the data collected by a Consumer Products Group on the relations
 * •	Use a scatter plot to show the relationship between mpg and weight of a car using `.scatter()`
 * •	Set appropriate labels for axes
 * •	Give a title to the plot
-* •	Create a legend
-Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
+** •	Create a legend
+* Looking the scatter plot, think about: how would you describe the relationship between these two attributes?
 * The graph you create should look like this:
  ![image](https://github.com/user-attachments/assets/650d7b56-4eda-4669-9e7b-a8c531d60824)
 
