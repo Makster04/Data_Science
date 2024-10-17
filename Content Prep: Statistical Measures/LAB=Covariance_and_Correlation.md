@@ -67,24 +67,30 @@ Looking at the formula of covariance, you'll notice that it is composed of $(x_i
 
 So how do you do this? You can write a function that takes in a list, calculates the mean of this list, and returns a new list containing each element minus the calculated mean value. This will be used to calculate $(x_i -\bar x)$ and $(y_i -\bar y)$.
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
 
 def mean_normalize(var):
     # Initialize a list for storing normalized values
-    None
-    
+    normalized_values = []
+
     # Calculate the mean of var
-    None
-    
+    mean_value = sum(var) / len(var)
+
     # For each element in var, subtract the mean and add the result to the new list
-    None
-    
-    # Return the new list
-    None
+    for value in var:
+        normalized_values.append(value - mean_value)
+
+    return normalized_values
+
+# Test the function
 
 mean_normalize([1, 2, 3, 4, 5]), mean_normalize([11, 22, 33, 44, 55])
+# ([-2.0, -1.0, 0.0, 1.0, 2.0], [-22.0, -11.0, 0.0, 11.0, 22.0])
+```
+#### Output:
+```
 # ([-2.0, -1.0, 0.0, 1.0, 2.0], [-22.0, -11.0, 0.0, 11.0, 22.0])
 ```
 
@@ -92,11 +98,36 @@ Great! You'll see that our function maintains the _variance_ of list elements an
 
 Use the `mean_normalize()` function to create a new variable `height_normalized` to be used in the plotting code below.
 
-
+#### Input:
 ```python
 # Mean normalize the height (replace None with appropriate code)
-height_normalized = None
+height_normalized = mean_normalize(height)
 height_normalized
+```
+#### Output:
+```
+[1.1500000000000057,
+ 4.150000000000006,
+ -5.849999999999994,
+ 2.1500000000000057,
+ 4.150000000000006,
+ -8.849999999999994,
+ 5.150000000000006,
+ 6.150000000000006,
+ -8.849999999999994,
+ 7.150000000000006,
+ -5.849999999999994,
+ -7.849999999999994,
+ 2.1500000000000057,
+ 1.1500000000000057,
+ -2.8499999999999943,
+ 2.1500000000000057,
+ 5.150000000000006,
+ -0.8499999999999943,
+ -1.8499999999999943,
+ 2.1500000000000057]
+________________________________________
+
 ```
 
 Now, run the cell below to visualize the data before and after mean normalization. 
@@ -118,6 +149,8 @@ ax.set_ylabel("Count")
 
 ax.legend(loc="center");
 ```
+![image](https://github.com/user-attachments/assets/13bc4a7f-e39e-4ae4-b176-e22ae339675a)
+
 
 There you go! The _shape_ of the data isn't changed, but the mean is just shifted! You can also try this for the `weight` variable if you wish.
 
@@ -137,18 +170,31 @@ For two vectors `a` and `b`, a dot product is calculated by multiplying each ele
 
 Let's write a function that takes two iterables and returns their dot product. 
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
 
 def dot_product(x, y):
-    None
+    # Initialize a variable to store the sum of the products
+    dot_product_result = 0
 
+    # Iterate over both lists and multiply corresponding elements
+    for i in range(len(x)):
+        dot_product_result += x[i] * y[i]
+
+    return dot_product_result
+
+# Test the function with sample data
 a = [1, 2, 3]
 b = [4, 5, 6]
 
+
 dot_product(a,b)
 #  32, calculated as (1*4 + 2*5 + 3*6)
+```
+#### Output:
+```
+32
 ```
 
 If you apply `mean_normalize` then `dot_product`, you have $\sum_{i=1}^{n}(x_i -\mu_x)(y_i - \mu_y)$ (the numerator of the covariance formula).
@@ -159,25 +205,31 @@ To accomplish this, apply `mean_normalize` and `dot_product`, and divide the who
 
 $$\frac{1}{n-1}\displaystyle\sum_{i=1}^{n}(x_i -\bar x)(y_i - \bar y)$$
 
-
+#### Input:
 ```python
 # Replace None with appropriate code
 
 def covariance(x, y):
     # Mean normalize both lists
-    x_norm = None
-    y_norm = None
+    x_norm = mean_normalize(height)
+    y_norm = mean_normalize(weight)
 
     # Calculate the numerator
-    numerator = None
+    numerator = dot_product(x_norm, y_norm)
+
 
     # Divide the numerator by n - 1 and return
-    return None
+    return numerator / (len(x)-1)
 
 
 covariance(height, weight)
 # 144.75789473684208
 ```
+#### Output:
+```
+144.75789473684208
+```
+
 
 So, we have a covariance of about 144.8. Recall the questions posed at the beginning:
 
@@ -230,47 +282,57 @@ $$\sqrt{\frac{1}{n-1} \sum_{i=1}^{n}(x_i - \bar{x})^2} * \sqrt{\frac{1}{n-1} \su
 
 Let's use this helper function to calculate the standard deviation:
 
-
+#### Input:
 ```python
 # Run this cell without changes
 from math import sqrt
 
 def stddev(var):
     mean = sum(var)/len(var)
-    
+
     sum_of_squares = 0
     for i in var:
         sum_of_squares += (i - mean)**2
-    
+
     n = len(var)
     variance = sum_of_squares / (n - 1)
     return sqrt(variance)
 
 stddev(height)
 # 5.112162998801562
+
 ```
+#### Output:
+```
+5.112162998801562
+```
+
 
 Now, use the functions `covariance()` and `stddev()` to define a function, `correlation()` that calculates the correlation between two lists. 
 
-
+#### Input:
 ```python
 # Calculate correlation between two variables using formula above
 # Replace None with appropriate code
 
 def correlation(x, y):
     # Find the numerator (covariance)
-    numerator = None
-    
+    numerator = covariance(x, y)
+
     # Find standard deviations of both lists
-    s_x = None
-    s_y = None
+    s_x = stddev(x) 
+    s_y = stddev(y) 
 
     # Return numerator divided by multiplied standard deviations
-    return None
+    return numerator / (s_x * s_y)
 
 
 correlation(height, weight)
 # 0.9773995748246297
+```
+#### Output:
+```
+0.9773995748246297
 ```
 
 A correlation of 0.98, that's very close to 1! That means we can answer question 3: there is a **very strong** linear relationship between height and weight — at least for this particular sample.
@@ -281,7 +343,7 @@ That's one of the key takeaways, that sample size plays a major rule in determin
 
 A scatter plot of this sample of height and weight aligns well with this finding of a strong correlation:
 
-
+#### Input:
 ```python
 # Run this cell without changes
 
@@ -300,6 +362,8 @@ ax.set_ylabel("Weight (pounds)")
 
 ax.legend();
 ```
+![image](https://github.com/user-attachments/assets/0a71906f-54b7-4af4-b8e9-86f74326c6ef)
+
 
 ## Simplifying the Process with NumPy
 
@@ -323,6 +387,9 @@ import numpy as np
 covariance_matrix = np.cov(height, weight)
 covariance_matrix[0][1]
 ```
+```
+144.75789473684205
+```
 
 ### Correlation with NumPy
 
@@ -332,6 +399,9 @@ covariance_matrix[0][1]
 # Same as covariance, NumPy returns a matrix but we only need one value
 correlation_matrix = np.corrcoef(height, weight)
 correlation_matrix[0][1]
+```
+```
+0.9773995748246294
 ```
 
 That was a lot simpler than calculating it by hand!
