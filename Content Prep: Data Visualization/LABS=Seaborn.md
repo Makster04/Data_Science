@@ -25,17 +25,22 @@ In the cell below:
 
 
 ```python
-# Your code here
+import numpy as np
+
+import seaborn as sns
+
+%matplotlib inline
 ```
 
 Great! Now, run the cell below to create a sample dataset. 
 
-
+#### Input:
 ```python
 data = np.random.normal(size=(20, 10)) + np.arange(10) / 2
 
 data
 ```
+#### Output:
 ```
 array([[-0.4910446 ,  0.96625651,  2.11518517,  2.55725425,  2.48252072,
          1.17664717,  3.21901381,  3.31070445,  4.18299629,  5.11076087],
@@ -103,10 +108,11 @@ In the cell below:
     * `ylabel= 'Y Label'`
     * `title = 'Example Boxplot'`    
 
-
+#### Input:
 ```python
 boxplot.set(xlabel='X Label', ylabel='Y Label', title='Example Boxplot')
 ```
+#### Output:
 ```
 [Text(0.5, 4.444444444444445, 'X Label'),
  Text(4.444444444444445, 0.5, 'Y Label'),
@@ -121,10 +127,11 @@ In the cell below:
 
 **_NOTE_**: For this visualization, you do not need to store the object in a variable. Just call the methods.
 
-
+#### Input:
 ```python
 sns.boxplot(data=data).set(xlabel='X Label', ylabel='Y Label', title='Example Boxplot')
 ```
+#### Output:
 ```
 [Text(0.5, 0, 'X Label'),
  Text(0, 0.5, 'Y Label'),
@@ -144,11 +151,12 @@ In the cell below:
 * Call Seaborn's `set_style()` method and pass in the string `'darkgrid'`. 
 * Recreate the labeled boxplot that we made in the cell above. 
 
-
+#### Input:
 ```python
 sns.set_style("darkgrid")
 sns.boxplot(data=data).set(xlabel='X Label', ylabel='Y Label', title='Example Boxplot')
 ```
+#### Output:
 ```
 [Text(0.5, 0, 'X Label'),
  Text(0, 0.5, 'Y Label'),
@@ -168,12 +176,13 @@ In the cell below:
 * Call Seaborn's `set_context()` method and pass in the string `'poster'`.
 * Recreate the labeled boxplot that we made in the cell above.
 
-
+#### Input:
 ```python
 sns.set_style("darkgrid")
 sns.set_context("poster")
 sns.boxplot(data=data).set(xlabel='X Label', ylabel='Y Label', title='Example Boxplot')
 ```
+#### Output:
 ```
 [Text(0.5, 0, 'X Label'),
  Text(0, 0.5, 'Y Label'),
@@ -191,12 +200,13 @@ Let's change our context back to `'notebook'` so that the next visualizations we
 
 In the cell below, change the context back to `'notebook'`.
 
-
+#### Input:
 ```python
 sns.set_style("darkgrid")
 sns.set_context("notebook")
 sns.boxplot(data=data).set(xlabel='X Label', ylabel='Y Label', title='Example Boxplot')
 ```
+#### Output:
 ```
 [Text(0.5, 0, 'X Label'),
  Text(0, 0.5, 'Y Label'),
@@ -218,10 +228,11 @@ For this visualization, we'll need a more advanced dataset than the example we c
 
 Do this now in the cell below.
 
-
+#### Input:
 ```python
 sns.get_dataset_names()
 ```
+#### Output:
 ```
 ['anagrams',
  'anscombe',
@@ -252,12 +263,13 @@ Great! For the reamainder of this notebook, we'll use the `'tips'` dataset. We c
 
 In the cell below, get the tips dataset and store it in the variable `tips`. Then, display the head of the DataFrame so we can see what we're working with. 
 
-
+#### Input
 ```python
 tips = sns.load_dataset('tips')
 
 print(tips.head())
 ```
+#### Output:
 ```
    total_bill   tip     sex smoker  day    time  size
 0       16.99  1.01  Female     No  Sun  Dinner     2
@@ -276,10 +288,11 @@ In the cell below:
     * `hue='smoker'`
     * `data= tips`
 
-
+#### Input:
 ```python
 sns.lmplot(x='total_bill', y='tip', hue='smoker', data=tips)
 ```
+#### Output:
 ```
 <seaborn.axisgrid.FacetGrid at 0x7f6abf701090>
 ```
