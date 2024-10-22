@@ -274,8 +274,9 @@ ax2.set_ylabel('z-axis label')
 # Add Titles
 ax1.set_title('Left Plot')
 ax2.set_title('Right Plot')
-![image](https://github.com/user-attachments/assets/5a982502-a1ed-4cbf-b886-8e0af5f0dc69)
 ```
+![image](https://github.com/user-attachments/assets/5a982502-a1ed-4cbf-b886-8e0af5f0dc69)
+
 
 ________________________________________
 **Note:** Instead of changing the plot size as you did in Exercise 5, one other technique you could have used to help with overlapping plot labels is a "tight layout" (see [Matplotlib guide](https://matplotlib.org/tutorials/intermediate/tight_layout_guide.html)).
