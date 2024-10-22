@@ -15,8 +15,7 @@ You will be able to:
 
 Let's give you a head start by generating some data for you to plot:
 ________________________________________
-``` 
-python
+```python
 # Run this cell without changes
 import numpy as np
 
