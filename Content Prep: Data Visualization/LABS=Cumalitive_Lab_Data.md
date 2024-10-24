@@ -101,7 +101,6 @@ print(macbeth[:500])
 
 #### Output:
 ```
-
     Data type: <class 'str'>
     
     Number of characters: 122550
@@ -132,7 +131,6 @@ print(macbeth[:500])
     Houer through the fogg
 ```
 
-
 ## Word Count Summary
 
 Create a variable `word_count` that is an integer representing the total count of words in `macbeth`. In order to do this, first create a variable `words_raw` that is a list containing all words in the string.
@@ -140,7 +138,6 @@ Create a variable `word_count` that is an integer representing the total count o
 Hint: look at the `.split()` string method ([documentation here](https://docs.python.org/3/library/stdtypes.html#str.split))
 
 
-```
 #### Input:
 
 ```python
@@ -156,6 +153,7 @@ print("Here are some examples:", words_raw[11:21])
     Macbeth contains 20641 words
     Here are some examples: ['Enter', 'three', 'Witches.', '1.', 'When', 'shall', 'we', 'three', 'meet', 'againe?']
 ```
+
 ## Unique Word Count
 
 Create a variable `unique_word_count` that is an integer representing the count of unique words in Macbeth.
@@ -189,15 +187,10 @@ print("Cleaned word examples:", words_cleaned[11:21])
 #### Output:
 ```
     Cleaned word examples: ['enter', 'three', 'witches', '1', 'when', 'shall', 'we', 'three', 'meet', 'againe']
-
 ```
-
-
 
 #### Input:
 ```python
-# __SOLUTION__
-
 # Use set() to only include unique words
 unique_word_count = len(set(words_cleaned))
 
@@ -319,7 +312,6 @@ Details:
 
 #### Input:
 ```python
-# __SOLUTION__
 
 # Matplotlib version
 fig, ax = plt.subplots(figsize=(15,5))
@@ -330,9 +322,6 @@ ax.set_title("Word Frequency Distribution for Macbeth");
 ```
  ![image](https://github.com/user-attachments/assets/db899931-4052-4ed6-981f-f799dbdcd521)
    
-
-
-
 ```python
 # __SOLUTION__
 
@@ -353,11 +342,6 @@ sns.histplot(
 );
 ```
 ![image](https://github.com/user-attachments/assets/42ec0187-6a6d-476b-a9ab-19237304f79f)
-
-
-    
-
-    
 
 
 Wow, that is a very skewed dataset! It looks like the overwhelming majority of words appear about 20 times or fewer, but we also have words (like 'the', the most common word discovered above) that appear hundreds of times. Those very frequent words are so rare that we can't even see their associated counts, the bars are so small.
@@ -427,6 +411,9 @@ Details:
  - You can use any colors or styles that look good to you
 
 #### Input:
+
+
+#### Matplotlib Version:
 ```python
 # __SOLUTION__
 
@@ -435,6 +422,7 @@ Details:
 # You don't have to reverse the order, I just think it looks better
 # for the largest to be at the top rather than closest to the x-axis
 # (the default behavior)
+
 frequencies_reversed = frequencies[::-1]
 labels_reversed = labels[::-1]
 
@@ -443,6 +431,7 @@ ax.barh(ticks, frequencies_reversed)
 
 # You have to set both the ticks themselves and the labels
 # The ticks make it so there are fully 25 ticks, not just 6
+
 ax.set_yticks(ticks)
 # The labels put the words next to the tick marks
 ax.set_yticklabels(labels_reversed)
@@ -454,10 +443,7 @@ ax.set_title("Top 25 Words in Macbeth");
     
 ![image](https://github.com/user-attachments/assets/ba1b1fc2-9d09-4375-a6a7-bdea45b98a36)
 
-    
-
-
-
+#### Seaborn Version:
 ```python
 # __SOLUTION__
 
