@@ -81,20 +81,6 @@ sns.set_style("whitegrid")
 %matplotlib inline
 ```
 
-
-```python
-# __SOLUTION__ 
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import requests
-
-sns.set_context("talk")
-sns.set_style("whitegrid")
-%matplotlib inline
-```
-
-
 ```python
 # Run this cell without changes
 response = requests.get('https://www.gutenberg.org/cache/epub/2264/pg2264.txt')
@@ -113,23 +99,7 @@ print("First 500 characters:")
 print(macbeth[:500])
 ```
 
-
-```python
-# __SOLUTION__
-response = requests.get('https://www.gutenberg.org/cache/epub/2264/pg2264.txt')
-full_text = response.text
-
-# The beginning describes the source/copyright, it isn't the actual text
-# of the play until the 4863rd character
-macbeth = full_text[4863:]
-
-# Print string summary
-print("Data type:", type(macbeth))
-print()
-print("Number of characters:", len(macbeth))
-print()
-print("First 500 characters:")
-print(macbeth[:500])
+#### Output:
 ```
 
     Data type: <class 'str'>
@@ -160,6 +130,7 @@ print(macbeth[:500])
     
        All. Padock calls anon: faire is foule, and foule is faire,
     Houer through the fogg
+```
 
 
 ## Word Count Summary
@@ -168,14 +139,7 @@ Create a variable `word_count` that is an integer representing the total count o
 
 Hint: look at the `.split()` string method ([documentation here](https://docs.python.org/3/library/stdtypes.html#str.split))
 
-#### Input:
-```python
-# Replace None with appropriate code
-words_raw = macbeth.split()
-word_count = len(words_raw)
 
-print("Macbeth contains {} words".format(word_count))
-print("Here are some examples:", words_raw[11:21])
 ```
 #### Input:
 
@@ -189,11 +153,9 @@ print("Here are some examples:", words_raw[11:21])
 ```
 #### Output:
 ```
-
     Macbeth contains 20641 words
     Here are some examples: ['Enter', 'three', 'Witches.', '1.', 'When', 'shall', 'we', 'three', 'meet', 'againe?']
-
-
+```
 ## Unique Word Count
 
 Create a variable `unique_word_count` that is an integer representing the count of unique words in Macbeth.
@@ -205,27 +167,6 @@ Hint: look at the `.strip()` string method ([documentation here](https://docs.py
 **Reminder:** strings are an *immutable* data type. That means that in order to modify their values, you have to reassign them with `=`. So, for example, if you wanted to make the variable `name` be title case, you need to do `name = name.title()`, not just `name.title()`.
 
 
-```python
-# Replace None with appropriate code
-
-# You can use this punctuation string for defining what characters to remove
-import string
-punctuation = string.punctuation
-
-words_cleaned = []
-
-for word in words_raw:
-    # Remove punctuation
-    None
-    # Make lowercase
-    None
-    # Append to words_cleaned
-    None
-
-# Use this print statement to double-check that everything
-# is lowercase and has punctuation removed
-print("Cleaned word examples:", words_cleaned[11:21])
-```
 
 #### Input:
 ```python
@@ -251,12 +192,7 @@ print("Cleaned word examples:", words_cleaned[11:21])
 
 ```
 
-```python
-# Replace None with appropriate code
-unique_word_count = None
 
-print("Macbeth contains {} unique words".format(unique_word_count))
-```
 
 #### Input:
 ```python
@@ -381,12 +317,7 @@ Details:
  - Make sure you include appropriate labels on the axes and the title
  - You can use any colors or styles that look good to you
 
-
-```python
-# Your code here
-```
-
-
+#### Input:
 ```python
 # __SOLUTION__
 
@@ -397,10 +328,9 @@ ax.set_xlabel("Word Frequency")
 ax.set_ylabel("Number of Words with This Frequency")
 ax.set_title("Word Frequency Distribution for Macbeth");
 ```
+ ![image](https://github.com/user-attachments/assets/db899931-4052-4ed6-981f-f799dbdcd521)
+   
 
-
-    
-![png](index_files/index_21_0.png)
 
 
 ```python
@@ -422,10 +352,11 @@ sns.histplot(
     title="Word Frequency Distribution for Macbeth"
 );
 ```
+![image](https://github.com/user-attachments/assets/42ec0187-6a6d-476b-a9ab-19237304f79f)
 
 
     
-![png](index_files/index_22_0.png)
+
     
 
 
@@ -438,36 +369,7 @@ Let's move on to making a bar graph of the most frequent words, to gain more ins
 For this task we are giving you even fewer hints than before. Check out the [Sorting HOW TO](https://docs.python.org/3/howto/sorting.html) Python documentation, especially the `student_tuples` example. Part of being a data scientist is figuring out how to do tasks that you may not have done before. Remember, in these situations, Google is your friend!
 
 
-```python
-# Replace None with appropriate code
-
-# This converts word_counts into a list of tuples,
-# similar to student_tuples
-counts_list = list(word_counts.items())
-
-# Sort the list of tuples by the frequency (second element in each tuple)
-# Make sure it goes from most to least frequent
-counts_list_sorted = None
-
-# Slice the sorted list to just the first 25 tuples
-top_25 = None
-
-# Make a list of dummy numbers to populate the axis with the words
-ticks = None
-
-# Get just the words from top_25 and assign to labels
-labels = None
-
-# Get just the frequencies from top_25 and assign to frequencies
-frequencies = None
-
-print("Tick values:", ticks)
-print()
-print("Labels:", labels)
-print()
-print("Frequencies:", frequencies)
-```
-
+##### Input:
 
 ```python
 # __SOLUTION__
@@ -502,15 +404,16 @@ print("Labels:", labels)
 print()
 print("Frequencies:", frequencies)
 ```
-
+#### Output:
+```
     Tick values: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
      24]
     
     Labels: ['the', 'and', 'to', 'of', 'i', 'a', 'you', 'in', 'that', 'my', 'is', 'with', 'not', 'it', 'be', 'his', 'this', 'macb', 'your', 'for', 'our', 'but', 'haue', 'all', 'me']
     
     Frequencies: [823, 609, 464, 454, 331, 296, 273, 257, 242, 203, 201, 198, 192, 173, 154, 146, 146, 137, 135, 134, 127, 124, 122, 113, 113]
-
-
+;
+```
 Now that we have our data, let's make a bar graph. Just to keep it interesting, let's make this a ***horizontal*** **bar graph**. Horizontal bar graphs are useful when you have a lot of text labels — it avoids having to turn the labels diagonally or even sideways in order for them to fit next to each other.
 
 **Matplotlib:** In a horizontal bar graph with Matplotlib, `y` is where you pass in the dummy tick values, and `width` is where you pass in the frequencies (vs. `x` and `height` in a standard bar chart). Full documentation for `.barh()`, the horizontal bar chart method, [here](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.barh.html#matplotlib.axes.Axes.barh).
@@ -523,12 +426,7 @@ Details:
  - Make sure you include appropriate labels on the axes and the title
  - You can use any colors or styles that look good to you
 
-
-```python
-# Your code here
-```
-
-
+#### Input:
 ```python
 # __SOLUTION__
 
@@ -553,10 +451,9 @@ ax.set_ylabel("Word")
 ax.set_xlabel("Number of Occurrences")
 ax.set_title("Top 25 Words in Macbeth");
 ```
-
-
     
-![png](index_files/index_28_0.png)
+![image](https://github.com/user-attachments/assets/ba1b1fc2-9d09-4375-a6a7-bdea45b98a36)
+
     
 
 
@@ -586,11 +483,8 @@ sns.barplot(
     title="Top 25 Words in Macbeth"
 );
 ```
+![image](https://github.com/user-attachments/assets/c9d15c57-e9bb-4a42-96af-891321b1a3f3)
 
-
-    
-![png](index_files/index_29_0.png)
-    
 
 
 ## Level Up (Optional)
