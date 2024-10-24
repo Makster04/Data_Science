@@ -177,11 +177,7 @@ word_count = len(words_raw)
 print("Macbeth contains {} words".format(word_count))
 print("Here are some examples:", words_raw[11:21])
 ```
-#### Output:
-```
-Macbeth contains 20641 words
-Here are some examples: ['Enter', 'three', 'Witches.', '1.', 'When', 'shall', 'we', 'three', 'meet', 'againe?']
-```
+#### Input:
 
 ```python
 # __SOLUTION__
@@ -190,6 +186,8 @@ word_count = len(words_raw)
 
 print("Macbeth contains {} words".format(word_count))
 print("Here are some examples:", words_raw[11:21])
+```
+#### Output:
 ```
 
     Macbeth contains 20641 words
@@ -229,7 +227,7 @@ for word in words_raw:
 print("Cleaned word examples:", words_cleaned[11:21])
 ```
 
-
+#### Input:
 ```python
 # __SOLUTION__
 import string
@@ -247,10 +245,11 @@ for word in words_raw:
 
 print("Cleaned word examples:", words_cleaned[11:21])
 ```
-
+#### Output:
+```
     Cleaned word examples: ['enter', 'three', 'witches', '1', 'when', 'shall', 'we', 'three', 'meet', 'againe']
 
-
+```
 
 ```python
 # Replace None with appropriate code
@@ -259,7 +258,7 @@ unique_word_count = None
 print("Macbeth contains {} unique words".format(unique_word_count))
 ```
 
-
+#### Input:
 ```python
 # __SOLUTION__
 
@@ -269,8 +268,10 @@ unique_word_count = len(set(words_cleaned))
 print("Macbeth contains {} unique words".format(unique_word_count))
 ```
 
+#### Output:
+```
     Macbeth contains 4102 unique words
-
+```
 
 ## Frequency Table
 
@@ -294,7 +295,7 @@ print(type(word_counts)) # <class 'dict'>
 print(len(word_counts))  # 4102
 ```
 
-
+#### Input:
 ```python
 # __SOLUTION__
 word_counts = {}
@@ -308,11 +309,12 @@ for word in words_cleaned:
 print(type(word_counts))
 print(len(word_counts))
 ```
-
+#### Output:
+```
     <class 'dict'>
     4102
 
-
+```
 Now it's time to find `most_frequent_word` and `least_frequent_word`. Again, this follows the logic of the mode function from the previous lab.
 
 The general algorithm for finding the most frequent word is:
@@ -339,7 +341,7 @@ print("The least frequent word in Macbeth is '{}', which appears {} times".forma
 ))
 ```
 
-
+#### Input:
 ```python
 # __SOLUTION__
 max_frequency = max(word_counts.values())
@@ -361,10 +363,11 @@ print("The least frequent word in Macbeth is '{}', which appears {} times".forma
     least_frequent_word, word_counts[least_frequent_word]
 ))
 ```
-
+#### Output:
+```
     The most frequent word in Macbeth is 'the', which appears 823 times
     The least frequent word in Macbeth is 'hear', which appears 1 times
-
+```
 
 ## Visualizations
 
@@ -398,8 +401,6 @@ ax.set_title("Word Frequency Distribution for Macbeth");
 
     
 ![png](index_files/index_21_0.png)
-    
-
 
 
 ```python
