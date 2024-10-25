@@ -1,4 +1,4 @@
-# While Loops, Break and Continue - Lab
+# [While Loops, Break and Continue - Lab](https://colab.research.google.com/gist/bpurdy-ds/3395343dca5ff676700ffc257c904aa2/index.ipynb)
 
 ## Introduction
 In this lab, we will practice using `while` loops, and `break` and `continue` statements in our code. We will use our control flow statements to iterate through collections and filter out or selectively operate on each element. We'll use `while` loops to perform operations until a given condition is no longer true. 
