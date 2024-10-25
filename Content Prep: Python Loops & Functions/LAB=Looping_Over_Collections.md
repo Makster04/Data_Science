@@ -1,4 +1,4 @@
-# Looping Over Collections - Lab
+# [Looping Over Collections - Lab](https://colab.research.google.com/gist/bpurdy-ds/25844c0e0f99c9771e558a65f29b7d40/index.ipynb#scrollTo=T2AsRDyeV4Z7)
 
 ## Introduction
 In this lab, we will be practicing what we know about `for` loops. We will use them to reduce the amount of code we write by hand to iterate through collections. We will use data from the excel file, `cities.xlsx`, that has data on different cities, their populations, and their areas. Finally, we will use this information to plot and compare each city. Let's get started!
