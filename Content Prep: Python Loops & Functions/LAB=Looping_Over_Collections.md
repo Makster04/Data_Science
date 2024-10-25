@@ -15,7 +15,7 @@ In the last lesson, we worked with some of our travel data.  Additional data has
 
 
 ```python
-iimport pandas as pd
+import pandas as pd
 file_name = '/content/sample_data/cities.xlsx'
 travel_df = pd.read_excel(file_name)
 cities = travel_df.to_dict('records')
@@ -64,47 +64,100 @@ buenos_aires = cities[0]
 buenos_aires
 ```
 #### Output:
-
+```
+{'City': 'Buenos Aires',
+ 'Country': 'Argentina',
+ 'Population': 2891000,
+ 'Area': 4758}
+```
+#### Input:
 ```python
 # here we want to find just the area of buenos_aires
-buenos_aires_area = None
-# code goes here
+buenos_aires_area = buenos_aires['Area']
 
 buenos_aires_area
 ```
-
+#### Output:
+```
+4758
+```
 Now that we have a bit more familiarity with our dictionaries, we can move to gathering all the information we need to create our traces. 
 
 Our `cities` list contains information about the top 12 cities.  For our upcoming iteration tasks, it will be useful to have a list of the numbers 0 through 11.  Use what we know about `len` and `range`to generate a list of numbers 0 through 11.  Assign this to a variable called `city_indices`.
 
-
+#### Input:
 ```python
-city_indices = None
+city_indices = list(range(len(cities)))
 city_indices # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+```
+#### Output:
+```
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 ```
 
 Now, using the `cities` list, we want to create a list of the names for each city. Loop through each city and append it's name (`'City'`) to the `city_names` list. 
 
-
+#### Input:
 ```python
 city_names = []
 
-city_names
+for city in cities:
+    city_names.append(city['City'])
+
+city_names  
+```
+#### Output:
+```
+['Buenos Aires',
+ 'Toronto',
+ 'Pyeongchang',
+ 'Marakesh',
+ 'Albuquerque',
+ 'Los Cabos',
+ 'Greenville',
+ 'Archipelago Sea',
+ 'Walla Walla Valley',
+ 'Salina Island',
+ 'Solta',
+ 'Iguazu Falls']
 ```
 
 Your task is to assign the variable `names_and_ranks` to a list, with each element equal to the city name and its corresponding rank.  For example, the first element would be, `"1. Buenos Aires"` and the second would be `"2. Toronto"`. Luckily for us, the list of cities that we read from our excel file is already in order by most populous to least. So, all we need to do is add numbers 1 through 12 to the beginning of each city name.
 
 Use a `for` loop and the lists `city_indices` and `city_names` to accomplish this.  We'll need to perform some nifty string interpolation to format our strings properly.  Check out [f-string interpolation](https://www.programiz.com/python-programming/string-interpolation#f) to see how we can pass values into a string.  Remember that list indices start at zero, but we want our `names_and_ranks` list to start at one!
 
-
+#### Input:
 ```python
+# write a for loop that adds the properly formatted string to the names_and_ranks list
 names_and_ranks = []
 
+# Use a for loop to go through city_indices and city_names
+for i in city_indices:
+    # Remember to add 1 to i because we want the ranks to start at 1
+    rank = i + 1
+    # Create the string using f-string interpolation
+    names_and_ranks.append(f"{rank}. {city_names[i]}")
+
+# Output the results
 names_and_ranks
-# write a for loop that adds the properly formatted string to the names_and_ranks list
+```
+#### Output:
+```
+['1. Buenos Aires',
+ '2. Toronto',
+ '3. Pyeongchang',
+ '4. Marakesh',
+ '5. Albuquerque',
+ '6. Los Cabos',
+ '7. Greenville',
+ '8. Archipelago Sea',
+ '9. Walla Walla Valley',
+ '10. Salina Island',
+ '11. Solta',
+ '12. Iguazu Falls']
 ```
 
-
+#### Input:
 ```python
 # run this cell to check that your output matches the format
 print(names_and_ranks[0]) # '1. Buenos Aires'
@@ -112,19 +165,52 @@ print(names_and_ranks[1]) # '2. Toronto'
 print(names_and_ranks[-1]) # '12. Iguazu Falls'
 ```
 
-Ok, now use another `for` loop to iterate through our list of `cities` and create a new list called `city_populations` that has the population for each city (`Population`).
-
-
-```python
-city_populations = []
-# use a for loop to iterate through the list of cities with their corresponding population
+#### Output:
+```
+1. Buenos Aires
+2. Toronto
+12. Iguazu Falls
 ```
 
+Ok, now use another `for` loop to iterate through our list of `cities` and create a new list called `city_populations` that has the population for each city (`Population`).
 
+#### Input:
+```python
+# use a for loop to iterate through the list of cities with their corresponding population
+city_populations = []
+
+for population in cities:
+    city_populations.append(population['Population'])
+
+city_populations
+```
+#### Output:
+```
+[2891000,
+ 2800000,
+ 2581000,
+ 928850,
+ 559277,
+ 287651,
+ 84554,
+ 60000,
+ 32237,
+ 4000,
+ 1700,
+ 0]
+```
+
+#### Input:
 ```python
 print(city_populations[0]) # 2891000
 print(city_populations[1]) # 2800000
 print(city_populations[-1]) # 0
+```
+#### Output:
+```
+2891000
+2800000
+0
 ```
 
 Great! Now we can begin to plot this data. Again, we'll used `matplotlib` to create a bar graph with our cities and their respective population data. To do this, we use the `.bar()` function and pass in our x-axis and y-axis values, add a label and title, and finally we call the `.show()` function to view our new bar graph. 
@@ -139,14 +225,25 @@ plt.ylabel('Population')
 plt.title('City Populations')
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/740375c8-200f-4047-bda6-75b2b9489fb9)
 
 Now we want declare a variable called `city_areas` that points to a list of all of the areas of the cities.  Let's use a `for` loop to iterate through our `cities` and have `city_areas` equal to each area of the city.  
 
-
+#### Input:
 ```python
+# write a for loop that adds the 'Area' of each city to the list city_areas
 city_areas = []
-#write a for loop that adds the 'Area' of each city to the list city_areas
+
+for Area in cities:
+  city_areas.append(Area['Area'])
+
+city_areas
 ```
+#### Output:
+```
+[4758, 2731, 3194, 200, 491, 3750, 68, 8300, 33, 27, 59, 672]
+```
+
 
 Now that we have the city areas and populations, let's plot them to see how the size of each city compares to its population. 
 
@@ -161,6 +258,7 @@ plt.xticks(rotation='vertical')
  
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/acd54dd4-bd70-484e-8e39-5092a271aade)
 
 
 ```python
@@ -172,6 +270,7 @@ plt.xticks(rotation='vertical')
  
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/65a5565b-a0a0-4968-a7ce-bcd5a2b744db)
 
 ## Summary
 
