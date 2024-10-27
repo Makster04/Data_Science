@@ -178,54 +178,132 @@ Use a `for` loop to find the first person in the list of people that has a dog a
 ```
 The code has been started for you below: 
 
-# STOP RIGHT HERE
+#### Input:
 ```python
-first_dog_person = None
+ffirst_dog_person = []
 iteration_count = 0
+
 for person in people:
     iteration_count += 1
-    # Continue writing code here
+    if iteration_count > 2:
+        break  # Stop if more than 2 iterations
+    if person['pet'] == 'dog':  # Assuming each person has a 'pet' field
+        first_dog_person = person
+        print(f"{person['name']} has a dog! Had to check {iteration_count} records to find a dog owner.")
+        break  # Stop once a dog owner is found
 ```
 
 Now, use a `for` loop to create a list of all the cat owners who are under the age of 28.
 
-
+#### Input:
 ```python
-cat_owners = None
-# for loop goes here
-```
+cat_owners = [] 
 
+for person in people:
+  if person['pet'] == 'Cat' and person['age'] < 28:
+    cat_owners.append(person)
+    print(cat_owners)
+```
+#### Output:
+```
+[{'name': 'Owen', 'age': 26, 'job': 'Sales person', 'pet': 'Cat', 'pet_name': 'Cosmo'}]
+[{'name': 'Owen', 'age': 26, 'job': 'Sales person', 'pet': 'Cat', 'pet_name': 'Cosmo'}, {'name': 'Josh', 'age': 22, 'job': 'Student', 'pet': 'Cat', 'pet_name': 'Chat'}]
+```
 Use a `for` loop to find the first person who is above 29 years old. Use a print statement to state their name and how old they are.
 
-
+#### Input:
 ```python
 thirty_something_yr_old = None
 # for loop goes here
+for person in people:
+    if person['age'] > 29:
+        print(f"{person['name']} is {person['age']} years old.")
+        continue
+```
+#### Output:
+```
+Katie is 30 years old.
+Estelle is 35 years old.
 ```
 
 Use a `for` loop to create a list of people's names and another list of pet names for all the **dog owners**.
 
-
+#### Input:
 ```python
 dog_owner_names = None
 dog_names = None
 # for loop goes here
+for person in people:
+  if person['pet'] == 'Dog':
+    print(f"{person['name']} has a dog named {person['pet_name']}.")
+    continue
+```
+#### Output:
+```python
+Katie has a dog named Frank.
+Estelle has a dog named Gabby.
+Gustav has a dog named Helen.
 ```
 
 ## Level Up 
 Use a `for` loop to create a list of odd numbers from the list of numbers from 0 to 100. Each time there is an odd number, add 10 to it and append it to `list_of_odd_numbers_plus_ten`. Stop adding numbers to the list when there are 35 numbers in it. Once you have reached 35 numbers, return the sum of the new list of numbers.
 
-
+#### Input:
 ```python
 list_of_numbers = list(range(0, 100))
 list_of_odd_numbers_plus_ten = []
-
 # use a for loop to create a list of odd numbers from the list of numbers from 0 to 100
 # each time there is an odd number, add 10 to it and append it to the list_of_odd_numbers_plus_ten
 # stop adding numbers to the list when there are 35 numbers
 # use break and continue statements in your code
 for number in list_of_numbers:
-    # Continue writing code here
+  if number % 2 != 0:
+    number += 10
+    list_of_odd_numbers_plus_ten.append(number)
+   
+    print(number)
+  elif len(list_of_odd_numbers_plus_ten) > 34:
+    break
+    print(number)
+    continue
+```
+#### Output:
+```
+11
+13
+15
+17
+19
+21
+23
+25
+27
+29
+31
+33
+35
+37
+39
+41
+43
+45
+47
+49
+51
+53
+55
+57
+59
+61
+63
+65
+67
+69
+71
+73
+75
+77
+79
 ```
 
 ## Summary
