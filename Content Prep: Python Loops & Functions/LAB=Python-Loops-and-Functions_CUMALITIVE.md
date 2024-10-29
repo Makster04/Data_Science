@@ -297,15 +297,21 @@ Here we are going to make use of another built-in Python function: `filter()` ([
 
 So, create a function `is_negative` that takes in a review dictionary as an argument and returns `True` if the review is negative, `False` otherwise:
 
-# STOP HERE
+#### Input:
 ```python
 def is_negative(review):
-    # Replace None with appropriate code
-    None
-    
+    return review_sentiment(review) == "negative"
+
 print(is_negative(reviews[2]))  # False (postive review)
 print(is_negative(reviews[4]))  # True
 print(is_negative(reviews[47])) # False (neutral review)
+```
+
+#### Output:
+```
+False
+True
+False
 ```
 
 Now we can use the `filter()` function to create a list of negative reviews:
@@ -315,16 +321,81 @@ Now we can use the `filter()` function to create a list of negative reviews:
 # Run this cell without changes
 list(filter(is_negative, reviews))
 ```
+#### Output:
+```
+'images': ['https://images-na.ssl-images-amazon.com/images/I/71tRehtvN+L._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/719K20U+MaL._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/71jd6yc1GdL._SY88.jpg'],
+  'styles': {'Color:': ' Black/White'}},
+ {'rating': 1.0,
+  'reviewer_name': 'fifrox',
+  'product_id': 'B00005MF9C',
+  'review_title': 'Works great for a week then fails!',
+  'review_time': '03 10, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/81QVkUT4hdL._SY88.jpg'],
+  'styles': {'Color:': ' Black/Stainless Steel'}},
+ {'rating': 1.0,
+  'reviewer_name': 'cas',
+  'product_id': 'B00005NCWQ',
+  'review_title': 'Garbage!!!',
+  'review_time': '03 26, 2018',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71Bxydi3DQL._SY88.jpg'],
+  'styles': {'Size:': ' 8-Cup'}},
+ {'rating': 1.0,
+  'reviewer_name': 'GoClick',
+  'product_id': 'B00005OTXM',
+  'review_title': 'Returned - produced revolting burnt plastic flavored coffee, and seemed flawed.',
+  'review_time': '04 16, 2015',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71o+7Zru+iL._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/81sbfP4tc8L._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/71vhOebyGaL._SY88.jpg'],
+  'styles': {'Style Name:': ' COFFEE MAKER ONLY'}},
+ {'rating': 2.0,
+  'reviewer_name': 'Picks n Pans',
+  'product_id': 'B00006F2LW',
+  'review_title': 'Cracked lid out of the box',
+  'review_time': '02 27, 2008',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/317fvUiuNDL._SY88.jpg'],
+  'styles': {'Color:': ' Black'}},
+ {'rating': 2.0,
+  'reviewer_name': 'LMM',
+  'product_id': 'B00008ELEA',
+  'review_title': 'smelled like the cord was burning',
+  'review_time': '06 6, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/51xXENQhIGL._SY88.jpg'],
+  'styles': {'Size:': ' 4-Cup'}},
+ {'rating': 1.0,
+  'reviewer_name': 'Marcia S.',
+  'product_id': 'B0000A1ZMS',
+  'review_title': 'Look what happened to this once great Cuisinart coffeemaker.',
+  'review_time': '11 12, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/51B8eue4nHL._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/519NziREFIL._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/51v+A1zWqTL._SY88.jpg'],
+  'styles': {'Color:': ' Black', 'Style Name:': ' Coffeemaker'}},
+ {'rating': 2.0,
+  'reviewer_name': 'Jimmie',
+  'product_id': 'B0000A1ZMS',
+  'review_title': 'Leaks and more',
+  'review_time': '01 13, 2011',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/51U4K+PzETL._SY88.jpg'],
+  'styles': {'Color:': ' Black', 'Style Name:': ' Coffeemaker'}}]
+```
 
 Write a function called `get_negative_reviews` that returns a list of these reviews. It should take the list of all reviews as an argument.
 
 (This can be a one-line function.)
 
-
+#### Input:
 ```python
-# Your code here
+def get_negative_reviews(review_list):
+    return list(filter(is_negative, review_list))
 
 len(get_negative_reviews(reviews)) # 15
+```
+#### Output:
+```
+15
 ```
 
 ### Sampling
@@ -349,19 +420,77 @@ So, for example, if we want 3 negative reviews:
 # You can run as many times as you want, to see different sample examples
 random.sample(get_negative_reviews(reviews), 3)
 ```
-
+```
+[{'rating': 1.0,
+  'reviewer_name': 'Toni Bautista',
+  'product_id': 'B00005IBX9',
+  'review_title': 'Great but NOT PERFECT -missing Side water panel',
+  'review_time': '02 24, 2017',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71X5NEjZG5L._SY88.jpg'],
+  'styles': {'Color:': ' Brushed Chrome'}},
+ {'rating': 1.0,
+  'reviewer_name': 'mathman54',
+  'product_id': 'B00004RFRV',
+  'review_title': "The bottom looks like it has rusted and I don't know how to ...",
+  'review_time': '02 15, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71qt4Hnra8L._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/71Wkg8MesdL._SY88.jpg'],
+  'styles': {'Size:': ' 12-Cup', 'Color:': ' Silver'}},
+ {'rating': 1.0,
+  'reviewer_name': 'SAinVA',
+  'product_id': 'B00005LM0T',
+  'review_title': 'Too much waste',
+  'review_time': '09 7, 2017',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71shZggLRHL._SY88.jpg'],
+  'styles': {'Size:': ' 34 oz.', 'Package Type:': ' Standard Packaging'}}]
+```
 Now, put that code into a function `get_negative_review_sample`. This function should take a list of reviews and the number of samples to select, and should return a sample of negative reviews.
 
 (You can assume that `num_samples` is a valid number. The number of samples must be less than or equal to the number of elements in the collection.)
 
-
+#### Input:
 ```python
 def get_negative_review_sample(review_list, num_samples):
-    # Replace None with appropriate code
-    None
-    
+    return random.sample(get_negative_reviews(review_list), num_samples)
+
 get_negative_review_sample(reviews, 4)
 ```
+#### Output:
+```
+[{'rating': 1.0,
+  'reviewer_name': 'EJ',
+  'product_id': 'B00004RFRV',
+  'review_title': 'Rusted spots everywhere fresh out the box...nasty',
+  'review_time': '06 4, 2017',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71Dbr6X0bYL._SY88.jpg'],
+  'styles': {'Size:': ' 9-Cup', 'Color:': ' Silver'}},
+ {'rating': 2.0,
+  'reviewer_name': 'fred o.',
+  'product_id': 'B00005MF9C',
+  'review_title': 'Good purchase',
+  'review_time': '09 4, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71tRehtvN+L._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/719K20U+MaL._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/71jd6yc1GdL._SY88.jpg'],
+  'styles': {'Color:': ' Black/White'}},
+ {'rating': 1.0,
+  'reviewer_name': 'Silicon Valley',
+  'product_id': 'B00005LM0T',
+  'review_title': 'FRAME RUSTS WITHIN A FEW WEEKS',
+  'review_time': '03 10, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71FREAeBLIL._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/71qkhDjseuL._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/7143mVMMoCL._SY88.jpg'],
+  'styles': {'Size:': ' 34 oz.', 'Package Type:': ' Standard Packaging'}},
+ {'rating': 1.0,
+  'reviewer_name': 'Toni Bautista',
+  'product_id': 'B00005IBX9',
+  'review_title': 'Great but NOT PERFECT -missing Side water panel',
+  'review_time': '02 24, 2017',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/71X5NEjZG5L._SY88.jpg'],
+  'styles': {'Color:': ' Brushed Chrome'}}]
+```
+
 
 Repeat the same process for positive reviews. That means we need:
 
@@ -369,12 +498,57 @@ Repeat the same process for positive reviews. That means we need:
 2. A function `get_positive_reviews` which returns a list of all positive reviews
 3. A function `get_positive_review_sample` which returns a sample of positive reviews with the specified length
 
-
+#### Input:
 ```python
-# Your code here
+# Function to check if a review is positive based on rating
+def is_positive(review):
+    return review["rating"] >= 4  # Returns True if the rating is 4 or higher, otherwise False
 
+# Function to filter and get only positive reviews from a list of reviews
+def get_positive_reviews(review_list):
+    return [review for review in review_list if is_positive(review)]  # List comprehension to include reviews with rating >= 4
+
+# Function to get a random sample of positive reviews
+def get_positive_review_sample(review_list, num_samples):
+    # Calls get_positive_reviews to filter positive reviews, then samples 'num_samples' reviews from the result
+    return random.sample(get_positive_reviews(review_list), num_samples)
+
+# Example call to get_positive_review_sample to retrieve 4 random positive reviews from the 'reviews' list
 get_positive_review_sample(reviews, 4)
 ```
+#### Output
+```
+[{'rating': 5.0,
+  'reviewer_name': 'ArmiWyf',
+  'product_id': 'B00004RFRV',
+  'review_title': 'LUV IT!!!',
+  'review_time': '09 2, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/61sbRLnd2UL._SY88.jpg'],
+  'styles': {'Size:': ' 12-Cup', 'Color:': ' Silver'}},
+ {'rating': 5.0,
+  'reviewer_name': 'dvrmasik',
+  'product_id': 'B00005NCWQ',
+  'review_title': 'rich and aromatic coffee',
+  'review_time': '05 5, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/81fgcTsXRwL._SY88.jpg',
+   'https://images-na.ssl-images-amazon.com/images/I/81bsfG7k7kL._SY88.jpg'],
+  'styles': {'Size:': ' 8-Cup'}},
+ {'rating': 5.0,
+  'reviewer_name': 'Alexander Lamakin',
+  'product_id': 'B00004S8DX',
+  'review_title': 'This is my good buy.',
+  'review_time': '11 29, 2016',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/7184SwO3X-L._SY88.jpg'],
+  'styles': {'Size:': ' Regular-used'}},
+ {'rating': 5.0,
+  'reviewer_name': 'Thicket',
+  'product_id': 'B00009ADDR',
+  'review_title': 'This press is stout!',
+  'review_time': '12 4, 2007',
+  'images': ['https://images-na.ssl-images-amazon.com/images/I/41xt8zREjbL._SY88.jpg'],
+  'styles': {'Size:': ' 36-Ounce', 'Color:': ' Polished'}}]
+```
+
 
 ## Individual Review Summary
 
@@ -411,6 +585,10 @@ selected_year = selected_review["review_time"][-4:]
 
 print(f'"{selected_review_title}": This was a {selected_sentiment} review written by {selected_author} in {selected_year}.')
 ```
+#### Output:
+```
+"Bialetti is the Best!": This was a positive review written by Karen in 2017.
+```
 
 Rewrite that code as a function called `get_review_summary`, which takes a review dictionary as an argument, and returns a string that resembles the previous summary string, e.g.
 
@@ -420,11 +598,29 @@ Rewrite that code as a function called `get_review_summary`, which takes a revie
 
 *Hint: look back at the functions you have previously written to see which ones might be useful to call within this function!*
 
-
+#### Input:
 ```python
-# Your code here
+def get_review_summary(review):
+    review_title = review["review_title"]
+    rating = review["rating"]
+    
+    if rating >= 4:
+        sentiment = "positive"
+    elif rating <= 2:
+        sentiment = "negative"
+    else:
+        sentiment = "neutral"
+        
+    author = review["reviewer_name"]
+    year = review["review_time"][-4:]
+    
+    return f'"{review_title}": This was a {sentiment} review written by {author} in {year}.'
 
-print(get_review_summary(reviews[2])) # "Bialetti is the Best!": This was a positive review written by Karen in 2017.
+print(get_review_summary(reviews[2])) 
+```
+#### Output:
+```
+"Bialetti is the Best!": This was a positive review written by Karen in 2017.
 ```
 
 Now, instead of copying and pasting that every time, we can just call it repeatedly!
@@ -442,8 +638,8 @@ Hints:
 
 ```python
 def review_summary_prompt(list_of_reviews):
-    # Replace None with appropriate code
-    None
+    index = int(input("Please enter a review index: "))
+    review_summary = get_review_summary(list_of_reviews[index])
 ```
 
 Run this cell, and try entering 2, 4, 52 (examples of positive, negative, neutral reviews)
@@ -475,6 +671,18 @@ print()
 print("Review years:")
 print(get_years(reviews))
 ```
+#### Output:
+```
+The coffee product review dataset contains 86 reviews
+
+Review sentiment:
+67 positive reviews
+15 negative reviews
+4 neutral reviews
+
+Review years:
+[2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]
+```
 
 ### Subset Samples
 
@@ -492,7 +700,22 @@ negative_samples = get_negative_review_sample(reviews, 5)
 for review in negative_samples:
     print(get_review_summary(review))
 ```
+#### Output:
+```
+Examples of positive reviews:
+"This thing is awesome!": This was a positive review written by Joseph P. Long in 2008.
+"Intoxicating aroma": This was a positive review written by Patrick523 in 2015.
+"12 years of heavy use - lasted longer than ex-husband": This was a positive review written by Alice Wakefield in 2007.
+"If you want to keep it hot, get this one.": This was a positive review written by KMac in 2016.
+"Well made with a charming nostalgic design.": This was a positive review written by Jean-Claude Van Darn in 2017.
 
+Examples of negative reviews:
+"The bottom looks like it has rusted and I don't know how to ...": This was a negative review written by mathman54 in 2016.
+"Look what happened to this once great Cuisinart coffeemaker.": This was a negative review written by Marcia S. in 2016.
+"Garbage!!!": This was a negative review written by cas in 2018.
+"Good purchase": This was a negative review written by fred o. in 2016.
+"Great but NOT PERFECT -missing Side water panel": This was a negative review written by Toni Bautista in 2017.
+```
 ### Summary Prompt
 
 
