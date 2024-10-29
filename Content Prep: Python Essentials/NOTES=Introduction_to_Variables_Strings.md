@@ -1,5 +1,5 @@
 
-# Introduction to Variables: Strings
+# [Introduction to Variables: Strings](https://colab.research.google.com/gist/bpurdy-ds/a35ec8396cc17df004d9f436ff501bc4/index.ipynb)
 
 ## Introduction
 As we already know from living in the digital age and the lessons we've already seen, programming is a powerful tool for answering questions about data. It allows us to collect, clean up and format our data and then perform calculations on that data.
