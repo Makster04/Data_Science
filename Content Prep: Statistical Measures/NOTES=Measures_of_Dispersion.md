@@ -1,173 +1,288 @@
-# Measures of Central Tendency
+# [Measures of Dispersion](https://colab.research.google.com/gist/bpurdy-ds/77fc0de471e8faaf99fd6788cc7db30f/index.ipynb)
 
 ## Introduction
 
-When we are working with a small set of data values, it is often possible to discuss these values individually. However, when we are dealing or working with large sets of data in real-world problems, we prefer to have some features that can summarize and represent the data in a concise format.
+Previously, you learned about three measures of central tendency: the mean, median, and mode. These metrics can give you a general understanding of where data values lie within the range of the whole dataset but they don't tell you the whole story. In fact, they can often be misleading!
 
-In this lesson, we will look at such measures first for a single data variable. e.g., the salary of workers in a particular factory. These measures will include measures of central tendency and measures of dispersion.
+To truly understand your data, you also need **Measures of Dispersion**, namely: absolute deviation, standard deviation, and variance. These measures tell you how tightly (or loosely) your data is clustered around its center. Generally, measures of dispersion report on how "noisy" your dataset is. 
 
-
+In this lesson, you'll learn about the different measures of dispersion and explore how they are related to each other as well as other summary statistics.
+ 
 ## Objectives
-
 You will be able to:
 
-* Compare the different measures of central tendency
-
-## Background
-
-The term *Central Tendency* or a *Measure of Central Tendency* is the **typical** or **central** value for a data distribution. It is also commonly known as just the *Center* of the distribution. If you weren't becoming a Data Scientist, you might just call it the "average", but it turns out that there are different types of "averages" that work better for answering different sorts of problems.
-
-There are three main measures of central tendency: the mean, the median, and the mode. Each of these measures describes a different way of indicating the typical or central value in the data as we will see below. 
+* Compare the different measures of dispersion
+* Create a box plot and use it to interpret the spread of data
 
 
-## Mean
+## Absolute Deviation
 
-The **Mean** or **Arithmetic Average** is the value obtained by dividing the sum of all the data by the total number of data points as shown in the formula below:
+**Absolute Deviation** is the simplest way of calculating the dispersion of a data set. It is calculated by taking a value from the dataset and subtracting the mean of the dataset. This helps to identify the "distance" between a given value and the mean. In other words, how much a value *deviates* from the mean.  
 
-$$ 
-\Large\bar X = \dfrac{\sum X}{N} $$
+> $\left|x_i - \bar{x}\right|$
 
-> Yes, we're using the dreaded "mathematical notation". It's OK. It's just a concise way to write things down. It's one of the reasons (along with long, confusing model names like "Recurrent Neural Networks") that Data Scientists make so much money. The math and long words scare people away from ideas that are actually pretty straightforward!
+Here $x_i$ denotes an element from $[x_1, x_2, .., x_n]$ , where $n$ is the total number of data points in the dataset. Recall, the symbol $\bar{x}$ (pronounced "x-bar") represents the sample mean. The vertical bars are used to denote absolute value so all absolute deviation values are positive. This is important because when measuring deviation, you just want to focus on how big the difference is, not its sign.
 
-So if you're a math whiz, great. If not, take a little time to look at and unpack the formulas we show in this course. Over time it'll become second nature and that's going to be really important as a practicing Data Scientist.
+If that sounded a little confusing, consider this example: Say the mean test score for a group of 100 students is 58.75 out of 100. If a particular student scored 60 out of 100, the absolute deviation of that score from the mean is:
 
-Let's start with the $\bar{x}$ (x-bar) - the bar over the top just means "mean of the sample".   
+> $ \left|60 - 58.75\right| = 1.25 $ 
 
-The mean value, shown as $\bar{x}$ (x-bar) for a vector $X$ is achieved by adding together all values of $X$ (shown as $\sum{X}$),  and dividing $N$ (number of observations).
-e.g. Let’s look at a very simple set of data representing the retirement age of 11 individuals
+**Average Absolute Deviation** is calculated by taking the mean of all individual absolute deviations in a data set as shown in the formula below:
+
+$$\large \dfrac{1}{n}\sum^n_{i=1}\left|(x_i-\bar x)\right| $$
+
+The advantage here is that the average absolute deviation yields one number to describe dispersion. To illustrate this, consider this example: In a group of four people, two people earn 50K USD a year and two earn 60K USD a year. The mean of the data set is 55K USD. The absolute deviations are:
+
+> $ \left|50 - 55\right| = 5 $   
+> $ \left|50 - 55\right| = 5 $   
+> $ \left|60 - 55\right| = 5 $     
+> $ \left|60 - 55\right| = 5 $     
+
+The average absolute deviation is:
+
+> $ \large \frac{5+5+5+5}{4} = 5 $
+
+## Variance
+
+A more complex measure of dispersion is **Variance**. Remember, measures of dispersion emphasize the magnitude of differences from the mean, not their sign. Unlike the absolute deviation, which uses the absolute value of the deviation to take care of negative values, the variance achieves positive values by *squaring* each of the deviations. Similar to what you saw with the average absolute deviation, the next step in calculating variance is to add up the squared deviations (the **sum of squares**), then divide by the total number of values in your dataset. 
+
+OK, that was a mouthful but you can break it down mathematically as follows:
+
+$$ \large \sigma^2 = \dfrac{1}{n}\displaystyle\sum^n_{i=1}(x_i-\mu)^2 $$
+
+> Recall the distinction between the sample mean ($\bar{x}$) and the population mean ($\mu$) - namely, that a sample mean is calculated using a subset of the population whereas the population mean is calculated using the entire population. You'll see here that the population mean is used. This is because unlike the mean, the variance formula changes slightly depending on whether you are working with data from a sample or data from the entire population. Don't worry if this is a little confusing now, the details will be discussed later. 
+
+Say you want to calculate the variance of our salary data above. The first step is to calculate all of the differences from the mean:
+
+> $ 50 - 55 = -5 $   
+> $ 50 - 55 = -5 $   
+> $ 60 - 55 = 5 $     
+> $ 60 - 55 = 5 $  
+
+*Note: no absolute values, the signs are kept*
+
+Next, square the differences:
+
+> $ (-5)^2 = 25 $   
+> $ (-5)^2 = 25 $   
+> $ 5^2 = 25 $     
+> $ 5^2 = 25 $
+
+Finally, add them up and divide by the total number of data points:
+
+> $ \large \frac{25+25+25+25}{4} = 25 $
+
+As a measure of dispersion, the variance is very useful. If the values in the data set are spread out about their mean, the variance will be a large number. On the other hand, if the values are clustered closely around their mean, the variance will be a much smaller number. 
+
+There are, however, two potential problems with the variance. First, because the deviations of values from the mean are squared, this gives more weight to extreme values. Outliers, which differ substantially more from the mean than the rest of the data in a data set, will impact the variance. Secondly, the variance is not in the same *units* as the individual values in a data set. Variance is measured in the *units squared*. This means we cannot directly relate a variance value to the values in our data set. If this isn't clear, go back to the salary example above. The salaries are measured in USD but the variance is measured in *USD squared* which is not the same thing.
+
+Fortunately, calculating the standard deviation rather than the variance fixes this problem. 
+
+## Standard Deviation
+
+The **Standard Deviation** is another measure of the spread of values within a dataset. 
+It is simply the square root of the variance. In the above formula, $\sigma^2$ is the variance so $\sigma$ is the standard deviation. 
+
+$$ \large \sigma = \sqrt{\dfrac{1}{n}\displaystyle\sum^n_{i=1}(x_i-\mu)^2} $$
+
+So for the salary example above, you can calculate:
+
+> $ \sigma = \sqrt{\sigma^2} = \sqrt{25} = 5 $
+
+Now, the units are in USD again!
+
+## Quantiles, Percentiles, and Quartiles
+
+**Quantiles** are points in a distribution that relate to the *rank order* of values in that distribution. Rank ordering just means the data are sorted in ascending order. You can find any quantile by sorting the sample. The middle value of the sorted sample (middle quantile, 50th percentile) is known as the **median**. The **limits** are the **minimum** and **maximum** values. Any other locations between these points can be described in terms of **percentiles**.
+
+Percentiles are descriptions of quantiles relative to 100. So the 80th percentile is 80% of the way up an ascending list of sorted values of data. For example, take a look at the image below: 80% of people in the data set are shorter than you so you are in the 80th percentile for height. 
+
+<img src="https://curriculum-content.s3.amazonaws.com/data-science/images/new_percent.png" width="600">
+
+
+## InterQuartile Range - IQR
+The **quartiles** of a dataset divide the data into **four** equal parts. Since there are four equal parts, there are 3 quartile positions that divide them. These are denoted by Q1, Q2, and Q3. The second quartile position, Q2, is the median of the dataset, which divides the dataset in half. Q1 divides the lower half and is known as the "lower quartile". Similarly, Q3 divides the upper half and is known as the "upper quartile". The image below illustrates how this looks:
+
+<img src="https://curriculum-content.s3.amazonaws.com/data-science/images/new_measuresofdispersion2.png" width="600">
+
+The **InterQuartile Range (IQR)** is a measure of where the “middle fifty” is in a dataset which is given by $ Q3 - Q1 $. This is useful because it tells you where the bulk of the values lie. To relate these concepts back to percentiles, Q1 is the 25th percentile and Q3 is the 75th percentile. The IQR is calculated by subtracting the 25th percentile from the 75th percentile. 
+
+In practice, there are actually several different methods for determining percentiles which are accepted and you may have encountered some of these methods before. For now, you can just focus on the method shown below which is what is used by default in the go-to statistical and mathematical Python packages that you will use throughout this course and your career like `numpy`.
+
+### Calculating IQR for a Given Data Set
+
+You will now get a feel for how IQR is calculated using the collection of numbers from the image above. First, put the numbers in a list.
+
+
+```python
+# List of numbers
+x = [3, 5, 8, 12, 15, 18, 20, 22, 25, 30, 50, 80, 687]
 ```
-54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60
+
+**Step 1:** Sort the data in ascending order (these numbers are already sorted but don't skip this step when you do this on other data- it's important!).
+
+
+```python
+# Sort in ascending order
+x = sorted(x)
 ```
 
-The mean value is calculated as: 
-1.  Adding together all the values 
-```
-54+54+54+55+56+57+57+58+58+60+60 = 623 
-```
-2. Dividing by the numbers of observations
-```
-623/11 = 56.6
+**Step 2:** Calculate the distance between the last element and the first element.
+
+
+```python
+# Distance between last and first element
+distance = len(x) - 1
 ```
 
-For most people, the "mean" is what they think of as the "average". If I got paid \\$20k and you got paid \\$40k last year our "average" salary was \\$30k.
+**Step 3:** Multiply the distance by the desired percentiles, 25th and 75th, expressed as fractions. This will yield the indices of the elements that correspond to the 25th percentile and 75th percentile, respectively.
 
-### Sample Mean vs. Population Mean
 
-Think back to the retirement age example above. The data set only included information about 11 individuals. There are certainly more than 11 people who retired out there but, for whatever reason, their data are not available. In mathematical terms, you would say the 11 individuals are a **sample** of the entire **population** of people who retired.  
+```python
+# Multiply distance by percentiles
 
-As a Data Scientist, you will often run into situations where you do not have access to data on the entire population of people you might be interested in. Instead you will only have access to a smaller sample from the entire population. It will be your job to estimate features of the population based on the sample. As you might imagine, as the sample size increases (in other words: a larger fraction of the population is sampled), it approximates the population more accurately. 
-
-The difference between sample and population does not impact the way you calculate mean - you still divide the sum of all values by the total number of values - but it is important to distinguish between a sample mean and population mean. This is why there are different mathematical symbols to represent them. The sample mean is represented by the $\bar{x}$ described above. The population mean is represented by the Greek letter, $\mu$ (mu, pronounced "mew"). The distinction between sample and population metrics will pop up every now and then throughout the course so keep this in the back of your head.   
-
-## Median
-
-The median is another measure of central tendency. It refers to the data situated at exactly the middle location of the distribution.
-
-In a set with an odd number of data points, the median is the middle value. So the median of 2, 4, 12 is 4. In our retirement data above, as we have 11 values, we can pick the 6th value (57) to be our median.
-
-If the number of data points is even then the median is the average (mean) of the two middle items. Let's look at this dataset for the average weight of 10 individuals:
-```
-55, 56, 56, 58, 60, 61, 63, 64, 70, 78
+# Index of 25th percentile
+index_p25 = 0.25*distance
+index_p25
 ```
 
-So here, for the even number of observations (i.e. 10), the median would be calculated as:
+
+
+
+    3.0
+
+
+
+
+```python
+# Index of 75th percentile
+index_p75 = 0.75*distance
+index_p75
 ```
-Median = (60 + 61)/2 = 60.5
+
+
+
+
+    9.0
+
+
+
+**Step 4:** Using the indices calculated above, determine the 25th and 75th percentiles.
+
+
+```python
+# 25th Percentile
+p25 = x[int(index_p25)]
+p25
 ```
 
-Why might we want to use the median instead of the mean? Well, imagine there are 10 people sitting in a bar. All of them make \\$50k a year. A hedge fund manager comes in who makes \\$20m a year. The "average" (mean) salary of people in the bar is now just over \\$1.86m a year! It is true, but it might be misleading if you relied on that data to ask any of the first 10 people to loan you \\$500k!
 
-So median is particularly useful for datasets where there are a number of significant outliers (like the hedge fund manager's salary) and you want to get a sense of a "representative" measure of centrality. If we looked at the median salary in the bar, it'd still be \\$50k even with the hedge fund manager. It'd be a little misleading for that one person but would give you a better sense of the kind of salary that most people in the bar made.
 
-## Mode
 
-The Mode refers to the data value that occurs most frequently in a given dataset. Hence, it uses the frequency (repetition) of a certain value to be a representative of the central tendency of data. 
+    12
 
-For our retirement data above, we can see that the value 54 appears most frequently (i.e. 3 times). So the mode value for retirement age, based on our data, would be 54 years. Similarly, for the weight data, the value 56 appears more frequently than the rest and hence would be considered a mode for this data.  
 
-If two (or more) values occur with the same frequency in a dataset, both (or all) of the items are considered the mode of the data and the data set is **multimodal**. (Multimodality and its impact on data analysis will be discussed later in the course.)
 
-The mode is particularly useful for categorical data (data grouped into categories) and is often used for filling in missing data in a messy data set. However, it's important to look at a plot of the distribution of data before using the mode to represent centrality as sometimes the most popular category will not be centrally positioned.
 
-## Histograms and Central Tendency
+```python
+# 75th Percentile
+p75 = x[int(index_p75)]
+p75
+```
 
-Histograms are a type of plot used to show the distribution of a single variable. The x-axis shows bins of values present in the dataset, and the y-axis shows a count of the number of cases falling into each bin.
 
-They can be used as an additional aid to help decide between different measures of central tendency.
 
-For the sample data above, let's draw a histogram for retirement ages.
+
+    30
+
+
+
+**Step 5:** Calculate the IQR by subtracting the 25th percentile from the 75th percentile.
+
+
+```python
+# IQR
+iqr = p75 - p25
+iqr
+```
+
+
+
+
+    18
+
+
+
+In practice, you will probably never calculate the IQR by hand since `numpy` has a built-in method for calculating percentiles.  
+
+
+```python
+import numpy as np
+
+np.percentile(x, 75) - np.percentile(x, 25)
+```
+
+
+
+
+    18.0
+
+
+
+You might have noticed that the indices calculated above happened to be whole numbers. Whole numbers are great to work with here since they can be used as indices directly. The calculation becomes a little more complicated when the indices are fractional numbers. In this case, `numpy` will use a technique called "linear interpolation" to take the fractional components into account. This is beyond the scope of what you need to know but if you are curious about how it works you can check out the [documentation]("https://docs.scipy.org/doc/numpy/reference/generated/numpy.percentile.html"). 
+
+## Visualizing Dispersion with Box Plots
+
+As a Data Scientist, you will need to be able to present your analysis visually. Box plots are a commonly used visual representation of centrality and spread of data that is based on quartiles.
+
+A general depiction of a box plot is shown below:
+
+<img src="https://curriculum-content.s3.amazonaws.com/data-science/images/new_boxplot.png" width="600">
+
+An important feature of the box plot is the set of lines that radiate from the middle to the "minimum" and "maximum" values. These lines are commonly called **"whiskers."** You've probably noticed in the image above that the lines do not go to the true minimum and maximum values (confusing right?) but rather $ Q1 - 1.5*IQR $ and $ Q3 + 1.5*IQR $, respectively. Any values that fall outside this range are shown as individual data points. These values are considered outliers. 
+
+> Note: You might have read about some alternative definitions for how to draw the whiskers. Though these alternative definitions may be acceptable in some contexts, the definition presented here is what Python uses so it's best to stick with that.
+
+Matplotlib can be used to generate box plots given a collection of values. Consider the retirement age data again:
 
 
 ```python
 import matplotlib.pyplot as plt
-x = [54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60]
-bins = 5
-plt.hist(x, bins=bins, edgecolor="black", color="#00C8AD")
-plt.title("Retirement Ages");
+%matplotlib inline
+
+plt.style.use('ggplot') # for viewing a grid on plot
+x = [54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 81]
+plt.boxplot(x)
+plt.title ("Retirement Age Box Plot")
+plt.show()
 ```
 
 
     
-![png](index_files/index_1_0.png)
+![png](index_files/index_20_0.png)
     
 
 
-Here we can see that the mean value, i.e. 56.6 does not fully reflect the typical behavior of this particular data if we wanted to use this as a representative figure for retirement age. The median i.e. 57 also fails to represent the general tendency found in this dataset. The mode, i.e. 54 shows the most commonly occurring value which could be used as a representative value. Such decisions, however, are subjective and may differ based on the analytical question asked. For this example, the average or median may still be used to reflect the overall range of values present in the dataset. 
+In this box plot, you can see that it is very easy to visualize the central tendency of the data. The median is drawn as a blue line at 57. The IQR identifies the middle 50% of the data which is shown as the box. The whiskers (two horizontal lines) show the minimum (54) and maximum (60) values in our dataset that fall within $Q1-1.5*IQR$ and $Q3+1.5*IQR$, respectively. The point at 81 falls outside the range of the whiskers so it is shown as a data point and is considered an outlier.
 
-> In a histogram, you can always visually locate the bin where most of the values occur (as peaks). That's the concept that a measure of central tendency attempts to represent as a number.
-
-Try putting in the values for the weight dataset and see what you think of the histogram. Also, try changing the bin size and see if it helps you better understand the distribution of underlying data. 
+The outlier data point squishes the visualization of the box. Sometimes, it is convenient to hide the outliers to get a better view of the box. You can pass the argument `showfliers=False` to hide the outliers:
 
 
 ```python
-# Use this cell to explore the weight dataset from previous lessons,
-# or a set of values of your choice
-x = []
-bins = 5
-
-plt.hist(x, bins=bins, edgecolor="black", color="#00C8AD")
-plt.title("Weights");
+plt.boxplot(x, showfliers=False)
+plt.title ("Retirement Age Box Plot - Without Outliers")
+plt.show()
 ```
 
-## Histogram Shape and Measures of Central Tendency
 
-### Symmetrical Distributions
+    
+![png](index_files/index_22_0.png)
+    
 
-For symmetric distributions, the mode, median, and mean are all in the middle of the distribution. The following histogram shows a larger retirement age dataset with a distribution which is symmetrical. All central measures in this case are equal to 58 years.
 
-<img src="https://curriculum-content.s3.amazonaws.com/data-science/images/image_sym.png" width="450">
+Use the ```showfliers``` option with caution. You don't want to ignore data! 
 
-### Skewed Distributions
-
-A non-symmetrical distribution is called a "skewed distribution". For skewed distribution, the mode and median remain unchanged, but the mean generally moves in the direction of the tails. For such distributions, the median is often a preferred measure of central tendency, as the mean does not clearly reflect the central tendency. Based on the direction of mean's movement, such distributions can be further categorized as positively or negatively skewed distributions as shown below:
-
-<img src="https://curriculum-content.s3.amazonaws.com/data-science/images/image_pos.png" width="450">
-
-<img src="https://curriculum-content.s3.amazonaws.com/data-science/images/image_neg.png" width="450">
-
-While performing analytical tasks, skewed distributions need special treatment at times. We will look deeper into this later during the course. 
-
-### Outliers and Measures of Central Tendency
-
-Outliers are extreme or unusual data values that are notably different from the rest of the data. It is important to detect outliers within a distribution, because they can alter the results of the data analysis. The mean is more sensitive to the existence of outliers than the median or mode. 
-
-Let's look again at our retirement dataset, but with one difference; the last observation of 60 years has been replaced with a retirement age of 81 years. 
-
-```
-54, 54, 54, 55, 56, 57, 57, 58, 58, 60, **81**
-```
-
-The new value is unusual as it is much higher than the other values, and hence considered an *outlier*. 
-
-As all values are included in the calculation of the mean, the outlier will influence the mean value. 
-
-```
-54+54+54+55+56+57+57+58+58+60+81 = 644 divided by 11 = 58.5 years
-```
-So we see that in this distribution the mean has increased due to the outlier. However, it has not changed the middle of the distribution, and therefore the median value is still 57 years. 
-
-Despite the existence of outliers in a distribution, the mean can still be an appropriate measure of central tendency, especially if the rest of the data is normally distributed. If the outlier is confirmed as a valid extreme value, it should be treated accordingly. 
 
 ## Summary
 
-In this lesson, we looked at three measures that can be used to identify the central tendency of a given dataset, the mean, the mode, and the median. These measures will be used throughout our data analysis journey and, with practice, we will learn to see how we can choose one (or more) of these measures to represent different datasets with different characteristics.
+In this lesson, you learned about some commonly used measures of dispersion. These measures identify the spread or deviation present in a dataset. You also looked at quantiles, percentiles, quartiles, and IQR as well as how to use those concepts to construct box plots for visualizing the distribution of data in a given dataset. You will revisit these topics continuously throughout the course and will see how these concepts are used toward effective data analysis. 
