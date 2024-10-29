@@ -141,12 +141,12 @@ Hint: look at the `.split()` string method ([documentation here](https://docs.py
 #### Input:
 
 ```python
-# __SOLUTION__
-words_raw = macbeth.split()
-word_count = len(words_raw)
+# __SOLUTION__ 
+words_raw = macbeth.split()  # Splits the text of Macbeth into a list of words by whitespace
+word_count = len(words_raw)  # Counts the total number of words in the list and assigns it to 'word_count'
 
-print("Macbeth contains {} words".format(word_count))
-print("Here are some examples:", words_raw[11:21])
+print("Macbeth contains {} words".format(word_count))  
+print("Here are some examples:", words_raw[11:21])  
 ```
 #### Output:
 ```
