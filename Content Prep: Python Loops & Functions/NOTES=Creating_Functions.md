@@ -74,16 +74,18 @@ Here is that same code wrapped in a function:
 
 ```python
 def greet_employees():
-    welcome_messages = []
-    for new_employee in new_employees:
-        welcome_messages.append("Hi " + new_employee.title() + ", I'm so glad to be working with you!" )
+    welcome_messages = []  # Initializes an empty list `welcome_messages` to store greeting messages.
+    for new_employee in new_employees:  # Iterates over each item in the `new_employees` list.
+        welcome_messages.append("Hi " + new_employee.title() + ", I'm so glad to be working with you!")  # Formats a greeting for each employee, capitalizes their name, and appends it to `welcome_messages`.
 
-    return welcome_messages
+    return welcome_messages  # Returns the list `welcome_messages` containing all the formatted greetings.
+    
 ```
 
-
 ```python
-greet_employees()
+
+greet_employees() # Calls the `greet_employees` function.
+
 ```
 
 
