@@ -149,16 +149,15 @@ Now, we can use functions with arguments to do a lot more than just make some st
 
 
 ```python
-def find_the_mean(list_nums):
-    length = len(list_nums)
-    total = sum(list_nums)
-    return total/length    
-```
+def find_the_mean(list_nums): 
+    length = len(list_nums)  # Calculates the length of `list_nums` and stores it in the variable `length`.
+    total = sum(list_nums)  # Calculates the sum of all elements in `list_nums` and stores it in the variable `total`.
+    return total / length  # Returns the mean by dividing `total` by `length`.
 
+```
 
 ```python
-find_the_mean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-```
+find_the_mean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])  # Calls the `find_the_mean` function with a list of numbers from 1 to 10.```
 
 
 
