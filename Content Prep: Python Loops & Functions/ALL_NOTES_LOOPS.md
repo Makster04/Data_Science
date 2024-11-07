@@ -1,280 +1,373 @@
-# [Looping Over Collections - Lab](https://colab.research.google.com/gist/bpurdy-ds/25844c0e0f99c9771e558a65f29b7d40/index.ipynb#scrollTo=T2AsRDyeV4Z7)
+# [Looping Over Collections](https://colab.research.google.com/gist/bpurdy-ds/d2355a4a06b8fc15a75ad0ea60199d75/index.ipynb)
 
 ## Introduction
-In this lab, we will be practicing what we know about `for` loops. We will use them to reduce the amount of code we write by hand to iterate through collections. We will use data from the excel file, `cities.xlsx`, that has data on different cities, their populations, and their areas. Finally, we will use this information to plot and compare each city. Let's get started!
+Loops allow us to iterate over each element in a collection, like a list. Perhaps we could already do that by writing out a line of code for each element in the collection, but that wouldn't be very efficient, would it? No, not at all. With loops, we can write one line of code that operates on each element in a collection. Pretty cool, right? Let's get started!
 
 ## Objectives
 
 You will be able to:
 
-* Use a `for` loop to iterate over a collection
+- Use a `for` loop to iterate over a collection
 
-## Identifying When To Use a For Loop
+## What is a for loop and how do I write one?
 
-In the last lesson, we worked with some of our travel data.  Additional data has been compiled in the `cities.xlsx` excel spreadsheet. Let's retrieve this data from excel using the Pandas library. Don't worry if Pandas feels unfamiliar, it will be covered in detail later. For now, just follow the provided code and get a feel for what is happening. First, read the information from the excel file as a list of dictionaries, with each dictionary representing a location. Then, assign this list to the variable `cities`.
-
-
-```python
-import pandas as pd
-file_name = '/content/sample_data/cities.xlsx'
-travel_df = pd.read_excel(file_name)
-cities = travel_df.to_dict('records')
-```
-
-Next, retrieve the first three city names, stored as the `'City'` attribute of each dictionary, and `'Population'` of each of the cities.  Then plot the names as our `x_values` and the populations as our `y_values` using the `matplotlib` library. Again, don't worry about understanding all of the details behind what `matplotlib` is doing. It will be covered in more detail soon.
+A `for` loop in Python, is primarily used for going through elements of a list one by one. We'll use a simple collection with 4 elements `0,1,2,3` as an example. Without a loop, if we wanted to print each element of the list we'd have to write it out like we do below:
 
 
 ```python
-import matplotlib.pyplot as plt
-
-%matplotlib inline
-
-x_values = [cities[0]['City'], cities[1]['City'], cities[2]['City']]
-y_values = [cities[0]['Population'], cities[1]['Population'], cities[2]['Population']]
- 
-plt.bar(x_values, y_values)
-plt.ylabel('Population')
-plt.title('City Populations')
- 
-plt.show()
+zero_to_three = [0, 1, 2, 3]
 ```
-![image](https://github.com/user-attachments/assets/de2dece9-b94d-4a56-af91-6df03d052f1b)
-
-Of course, as you may have spotted, there is a good amount of repetition in displaying this data.  Just take a look at how we retrieved the data for our `x_values` and `y_values`. And you'll notice that, unless we know the exact number of cities and populations in our excel file, this method of retrieving data might miss some data or try to access values that don't exist. 
-
-We can take a close look at this below:
 
 
 ```python
-x_values = [cities[0]['City'], cities[1]['City'], cities[2]['City']]
-y_values = [cities[0]['Population'], cities[1]['Population'], cities[2]['Population']]
+print(zero_to_three[0])
+print(zero_to_three[1])
+print(zero_to_three[2])
+print(zero_to_three[3])
 ```
 
-As we can see, if we have any more than 3 lines of data, our `x_values` and `y_values` will be incomplete, and if we had only 2 lines of data, our code would break.
+    0
+    1
+    2
+    3
 
-So in this lesson, we will use `for` loop to display information about our travel locations with less repetition and more accuracy.
 
-## Instructions
+> Press shift + enter
 
-Before we get into creating graphs from our cities data, let's get a bit more comfortable with the data we are working with. Let's see if we can iterate through just one element (i.e. a city **dictionary** object) to get the **area**. 
+In the example above, we are sequentially accessing each index in the list and printing its value (the element). That works well enough, but if our list were 100 elements long it would become extremely tedious. And what if the length of our list were ***unknown***. Spooky, right? 
 
-#### Input:
-```python
-buenos_aires = cities[0]
-buenos_aires
-```
-#### Output:
-```
-{'City': 'Buenos Aires',
- 'Country': 'Argentina',
- 'Population': 2891000,
- 'Area': 4758}
-```
-#### Input:
-```python
-# here we want to find just the area of buenos_aires
-buenos_aires_area = buenos_aires['Area']
+In fact, it may very often be the case that we don't know the length of the collection we are working with. So, writing all this static code for each element becomes not only unmanageable but impossible.
 
-buenos_aires_area
-```
-#### Output:
-```
-4758
-```
-Now that we have a bit more familiarity with our dictionaries, we can move to gathering all the information we need to create our traces. 
-
-Our `cities` list contains information about the top 12 cities.  For our upcoming iteration tasks, it will be useful to have a list of the numbers 0 through 11.  Use what we know about `len` and `range`to generate a list of numbers 0 through 11.  Assign this to a variable called `city_indices`.
-
-#### Input:
-```python
-city_indices = list(range(len(cities)))
-city_indices # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-```
-#### Output:
-```
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-```
-
-Now, using the `cities` list, we want to create a list of the names for each city. Loop through each city and append it's name (`'City'`) to the `city_names` list. 
-
-#### Input:
-```python
-city_names = []
-
-for city in cities:
-    city_names.append(city['City'])
-
-city_names  
-```
-#### Output:
-```
-['Buenos Aires',
- 'Toronto',
- 'Pyeongchang',
- 'Marakesh',
- 'Albuquerque',
- 'Los Cabos',
- 'Greenville',
- 'Archipelago Sea',
- 'Walla Walla Valley',
- 'Salina Island',
- 'Solta',
- 'Iguazu Falls']
-```
-
-Your task is to assign the variable `names_and_ranks` to a list, with each element equal to the city name and its corresponding rank.  For example, the first element would be, `"1. Buenos Aires"` and the second would be `"2. Toronto"`. Luckily for us, the list of cities that we read from our excel file is already in order by most populous to least. So, all we need to do is add numbers 1 through 12 to the beginning of each city name.
-
-Use a `for` loop and the lists `city_indices` and `city_names` to accomplish this.  We'll need to perform some nifty string interpolation to format our strings properly.  Check out [f-string interpolation](https://www.programiz.com/python-programming/string-interpolation#f) to see how we can pass values into a string.  Remember that list indices start at zero, but we want our `names_and_ranks` list to start at one!
-
-#### Input:
-```python
-# write a for loop that adds the properly formatted string to the names_and_ranks list
-names_and_ranks = []
-
-# Use a for loop to go through city_indices and city_names
-for i in city_indices:
-    # Remember to add 1 to i because we want the ranks to start at 1
-    rank = i + 1
-    # Create the string using f-string interpolation
-    names_and_ranks.append(f"{rank}. {city_names[i]}")
-
-# Output the results
-names_and_ranks
-```
-#### Output:
-```
-['1. Buenos Aires',
- '2. Toronto',
- '3. Pyeongchang',
- '4. Marakesh',
- '5. Albuquerque',
- '6. Los Cabos',
- '7. Greenville',
- '8. Archipelago Sea',
- '9. Walla Walla Valley',
- '10. Salina Island',
- '11. Solta',
- '12. Iguazu Falls']
-```
-
-#### Input:
-```python
-# run this cell to check that your output matches the format
-print(names_and_ranks[0]) # '1. Buenos Aires'
-print(names_and_ranks[1]) # '2. Toronto'
-print(names_and_ranks[-1]) # '12. Iguazu Falls'
-```
-
-#### Output:
-```
-1. Buenos Aires
-2. Toronto
-12. Iguazu Falls
-```
-
-Ok, now use another `for` loop to iterate through our list of `cities` and create a new list called `city_populations` that has the population for each city (`Population`).
-
-#### Input:
-```python
-# use a for loop to iterate through the list of cities with their corresponding population
-city_populations = []
-
-for population in cities:
-    city_populations.append(population['Population'])
-
-city_populations
-```
-#### Output:
-```
-[2891000,
- 2800000,
- 2581000,
- 928850,
- 559277,
- 287651,
- 84554,
- 60000,
- 32237,
- 4000,
- 1700,
- 0]
-```
-
-#### Input:
-```python
-print(city_populations[0]) # 2891000
-print(city_populations[1]) # 2800000
-print(city_populations[-1]) # 0
-```
-#### Output:
-```
-2891000
-2800000
-0
-```
-
-Great! Now we can begin to plot this data. Again, we'll used `matplotlib` to create a bar graph with our cities and their respective population data. To do this, we use the `.bar()` function and pass in our x-axis and y-axis values, add a label and title, and finally we call the `.show()` function to view our new bar graph. 
-
-> **Note:** In the example below, we are adding a custom rotation for our x-axis labels so that they do not overlap.
+Let's see how we would do the same operation above with a `for` loop!
 
 
 ```python
-plt.bar(names_and_ranks, city_populations)
-plt.xticks(rotation='vertical')
-plt.ylabel('Population')
-plt.title('City Populations')
-plt.show()
-```
-![image](https://github.com/user-attachments/assets/740375c8-200f-4047-bda6-75b2b9489fb9)
-
-Now we want declare a variable called `city_areas` that points to a list of all of the areas of the cities.  Let's use a `for` loop to iterate through our `cities` and have `city_areas` equal to each area of the city.  
-
-#### Input:
-```python
-# write a for loop that adds the 'Area' of each city to the list city_areas
-city_areas = []
-
-for Area in cities:
-  city_areas.append(Area['Area'])
-
-city_areas
-```
-#### Output:
-```
-[4758, 2731, 3194, 200, 491, 3750, 68, 8300, 33, 27, 59, 672]
+for number in zero_to_three:
+    print(number)
 ```
 
+    0
+    1
+    2
+    3
 
-Now that we have the city areas and populations, let's plot them to see how the size of each city compares to its population. 
+
+Great! We were able to reproduce the exact same functionality as we had previously. However, in this example, we used only **2** lines of code. 
+
+Now, the `for` loop may look a bit confusing at first, so, let's take a closer look at the syntax. A `for` loop essentially has two necessary components, which we'll refer to as arguments. The first argument is the variable name we are assigning to an element, or in this case, `number`. The second argument is the collection we are iterating over, or in this case, the list `zero_to_three`.
+
+We can give any name to the variable. The important thing to understand here is **it is the reference** to each **element** in the collection. So, when we print `number`, we are printing an element of the collection `zero_to_three`. 
+
+Every `for` loop needs to end the first line with a colon `:`. This indicates the start of the **block** of code. The block is simply the code that we want executed in each iteration of our loop. So, if all we want to do is print each element, then the line that prints the element is our block. Our block is indicated by indenting. So the first line after the colon `:` should be indented. When we want to end our block, we simply stop indenting. Any code following the `for` loop will only be executed after the `for` loop finishes.
+
+> *Remember, the block of code in a `for` loop is executed the same amount of times as there are elements in the collection.*
+
+Let's take a look at changing the variable names and adding more code to our example:
 
 
 ```python
-plt.bar(names_and_ranks, city_populations)
-
-plt.ylabel('Population')
-plt.xlabel('Cities')
-plt.title('City Populations')
-plt.xticks(rotation='vertical')
- 
-plt.show()
+iteration_count = 0
+for whatever_we_want in zero_to_three:
+    iteration_count += 1
+    print("This is iteration:", iteration_count)
+    print(whatever_we_want)
+print("The for loop is finished now! I am not in the for loop block, which is why I only printed once!")
 ```
-![image](https://github.com/user-attachments/assets/acd54dd4-bd70-484e-8e39-5092a271aade)
+
+    This is iteration: 1
+    0
+    This is iteration: 2
+    1
+    This is iteration: 3
+    2
+    This is iteration: 4
+    3
+    The for loop is finished now! I am not in the for loop block, which is why I only printed once!
+
+
+## Using list elements as indices
+
+In the examples above, we used the elements in our list to perform an operation, which was printing them. We can also use a list of numbers to access elements from another list. Let's take a look at an example.
 
 
 ```python
-plt.bar(names_and_ranks, city_areas)
-plt.ylabel('Area')
-plt.xlabel('Cities')
-plt.title('City Areas')
-plt.xticks(rotation='vertical')
- 
-plt.show()
+countries = ['Croatia', 'USA', 'Argentina', 'France', 'Brazil', 'Japan', 'Vietnam']
 ```
-![image](https://github.com/user-attachments/assets/65a5565b-a0a0-4968-a7ce-bcd5a2b744db)
+
+
+```python
+for index in [0,1,2,3,4,5,6]:
+    print(index)
+    print(countries[index])
+```
+
+    0
+    Croatia
+    1
+    USA
+    2
+    Argentina
+    3
+    France
+    4
+    Brazil
+    5
+    Japan
+    6
+    Vietnam
+
+
+So, in the example above, we are still using the elements in the list of numbers from 0 to 7 in our `for` loop, but we are instead using them to access each element of another list. This example is a bit contrived, but perhaps you have two lists that are ordered correctly and have information like the capital cities in one list and the corresponding countries in another. How would we print both of those out in the same line?
+
+
+```python
+countries = ['Croatia', 'USA', 'Argentina', 'France', 'Brazil', 'Japan', 'Vietnam']
+cities = ['Zagreb', 'District of Columbia', 'Buenos Aires', 'Paris', 'Rio de Janeiro', 'Tokyo', 'Hanoi']
+```
+
+
+```python
+for index in [0,1,2,3,4,5,6]:
+    print(cities[index]+",", countries[index])
+```
+
+    Zagreb, Croatia
+    District of Columbia, USA
+    Buenos Aires, Argentina
+    Paris, France
+    Rio de Janeiro, Brazil
+    Tokyo, Japan
+    Hanoi, Vietnam
+
+
+Of course, this does not work if our indices do not match up with the size of our list.
+
+
+```python
+for index in [0,1,2,3,4,5,6,7,8,9,10]:
+    print(cities[index]+",", countries[index])
+```
+
+    Zagreb, Croatia
+    District of Columbia, USA
+    Buenos Aires, Argentina
+    Paris, France
+    Rio de Janeiro, Brazil
+    Tokyo, Japan
+    Hanoi, Vietnam
+
+
+
+    ---------------------------------------------------------------------------
+
+    IndexError                                Traceback (most recent call last)
+
+    Cell In[11], line 2
+          1 for index in [0,1,2,3,4,5,6,7,8,9,10]:
+    ----> 2     print(cities[index]+",", countries[index])
+
+
+    IndexError: list index out of range
+
+
+So, the preferred way of figuring out the number of iterations on a list when you are unsure of its length would be to use the `len` function to calculate the size of the list.
+
+
+```python
+len(countries)
+```
+
+
+
+
+    7
+
+
+
+Then we can turn this length into a successive list of elements in the following way:   
+
+First, create a range object:
+
+
+```python
+range(0, len(countries))
+```
+
+
+
+
+    range(0, 7)
+
+
+
+And then convert this into a list:
+
+
+```python
+list(range(0, len(countries)))
+```
+
+
+
+
+    [0, 1, 2, 3, 4, 5, 6]
+
+
+
+Note that the range object is marking the starting and ending point, and excluding the end.  So this works perfectly:
+
+
+```python
+for index in list(range(0, len(countries))):
+    print(cities[index]+",", countries[index])
+```
+
+    Zagreb, Croatia
+    District of Columbia, USA
+    Buenos Aires, Argentina
+    Paris, France
+    Rio de Janeiro, Brazil
+    Tokyo, Japan
+    Hanoi, Vietnam
+
+
+And as we add or subtract countries, we will still be iterating through our list elements.
+
+
+```python
+countries.append('Mexico')
+cities.append('Mexico City')
+for index in list(range(0, len(countries))):
+    print(cities[index]+",", countries[index])
+```
+
+    Zagreb, Croatia
+    District of Columbia, USA
+    Buenos Aires, Argentina
+    Paris, France
+    Rio de Janeiro, Brazil
+    Tokyo, Japan
+    Hanoi, Vietnam
+    Mexico City, Mexico
+
+
+> Note: More conventionally, these contrived examples would employ the `enumerate()` method, but that is beyond the scope of the current lesson. At some point in the future, examine how this code snippet works:
+```
+for idx, item in enumerate(['A', 'B', 'C']):
+    print(idx, item)
+```
+
+## Iterating through different datatypes
+
+So far our loop variable has always been an element of a list that is a number.  However, our loop variable can represent any data type.  For example, let's have the loop variable represent each of the countries directly:
+
+
+```python
+different_elements = ['A String', ["a", 'list', "of", 5, ["elements"]], {'this': "is a dictionary"}]
+for element in different_elements:
+    print(element)
+```
+
+    A String
+    ['a', 'list', 'of', 5, ['elements']]
+    {'this': 'is a dictionary'}
+
+
+Now that we know we can iterate through a list that contains multiple data types, let's explore iterating through a data type that's **not a list**. 
+
+Another collection we commonly will iterate over is a **dictionary**. Dictionaries differ from lists, on a high level, in that elements are **key, value pairs** instead of one single element. So, when we go through each item in a dictionary, we are actually working with a two-part element (with a key & value). Similarly to how we name a variable for the element in a list for a `for` loop, we name a variable for both the **key** and **value** when we iterate over a dictionary. However, in Python, we can't iterate directly over the dictionary, we iterate over the **items** of a dictionary, which are the key-value pairs.  Let's take a look at an example.
+
+
+```python
+example_dictionary = {'first_name': "Terrance", 'last_name': "KOAR", 'favorite_language': "Python"}
+print(example_dictionary.items())
+type(example_dictionary.items())
+```
+
+    dict_items([('first_name', 'Terrance'), ('last_name', 'KOAR'), ('favorite_language', 'Python')])
+
+
+
+
+
+    dict_items
+
+
+
+Here we can see this **dict_items** object looks almost like a list, but each item has **two** parts, the **key** and **value**. So, in our first iteration, the first **key** will be **first_name**, and the first **value** will be **Terrance**.
+
+
+```python
+for key, value in example_dictionary.items():
+    print("this is the key:", key)    
+    print("this is the value:", value, "\n")
+```
+
+    this is the key: first_name
+    this is the value: Terrance 
+    
+    this is the key: last_name
+    this is the value: KOAR 
+    
+    this is the key: favorite_language
+    this is the value: Python 
+    
+
+
+So, we can see that the **dict_items** object groups the key values together in a way that we can iterate over them and access them. We can even use them to inform our program to operate on keys and values in a certain way. Such as, the last name is inexplicably in all caps. Let's look at how we can rectify that and title case the last name when we print out the full name of the `example_dictionary` object.
+
+
+```python
+first_name = ""
+last_name = ""
+for key, value in example_dictionary.items():
+    if key == "last_name":
+        last_name = value.title()
+    if key == "first_name":
+        first_name = value
+print(first_name, last_name)
+```
+
+    Terrance Koar
+
+
+## Conventional Naming Patterns
+
+Typically, when we are looping through a collection of things like `countries`, we will name the looping variable, `country`, since that is the singular version of the plural name that represents our list. This is convention and helps to not only remind us, but tell other people looking at our code what that variable is. Let's take a look at a couple examples.
+
+
+```python
+for country in countries:
+    print(country)
+```
+
+    Croatia
+    USA
+    Argentina
+    France
+    Brazil
+    Japan
+    Vietnam
+    Mexico
+
+
+
+```python
+ice_cream_flavors = ['Mint Chocolate Chip', 'Coffee', 'Cookie Dough', 'Fudge Mint Brownie', 'Vanilla Bean']
+for ice_cream_flavor in ice_cream_flavors:
+    print('I love ' + ice_cream_flavor + ' ice cream!!')
+```
+
+    I love Mint Chocolate Chip ice cream!!
+    I love Coffee ice cream!!
+    I love Cookie Dough ice cream!!
+    I love Fudge Mint Brownie ice cream!!
+    I love Vanilla Bean ice cream!!
+
 
 ## Summary
 
-In this section we saw how we can use `for` loops to go through elements of a list and perform the same operation on each.  By using `for` loops we were able to reduce the amount of code that we wrote and write more expressive code.
+In this lesson, we learned how to use loops to iterate through a collection of elements. We started with iterating through a list of numbers, and performed the same operation on each number. Then we saw how we can loop through the numbers and have each number be used to access a successive element from a separate list, like `countries`.  We then saw that to ensure our list of numbers matched the indices of our other list, we had to use the expression, `for element in list(range(0, len(list)))`. Finally, we introduced a naming convention that is commonly used when naming the variable for our loops when iterating over a collection that is a list of common elements (i.e. `ice_cream_flavor` for a list of `ice_cream_flavors`).
 
 # [While Loops, Break and Continue](https://colab.research.google.com/gist/bpurdy-ds/a53587ed0ae3f75333b4db564ee02ae2/index.ipynb)
 
