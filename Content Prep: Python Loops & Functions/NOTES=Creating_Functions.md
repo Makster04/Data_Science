@@ -24,6 +24,8 @@ We want to send each of them a nice welcome message.  We could use a `for` loop 
 
 
 ```python
+new_employees = ['jim', 'tracy', 'lisa']
+
 welcome_messages = []
 for new_employee in new_employees:
     welcome_messages.append("Hi " + new_employee.title() + ", I'm so glad to be working with you!" )
@@ -51,6 +53,8 @@ Well to accomplish welcoming the new employees, we would likely copy our code fr
 
 
 ```python
+new_employees = ['steven', 'jan', 'meryl']
+
 welcome_messages = []
 for new_employee in new_employees:
     welcome_messages.append("Hi " + new_employee.title() + ", I'm so glad to be working with you!" )
@@ -73,6 +77,8 @@ Here is that same code wrapped in a function:
 
 
 ```python
+new_employees = ['steven', 'jan', 'meryl']
+
 def greet_employees():
     welcome_messages = []  # Initializes an empty list `welcome_messages` to store greeting messages.
     for new_employee in new_employees:  # Iterates over each item in the `new_employees` list.
